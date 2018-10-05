@@ -4,6 +4,8 @@ Group project for JavaScript Based Applications class
 
 ## Auto generated stuff: 
 
+thanks angular 
+
 # CinemaAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
