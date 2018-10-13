@@ -1,0 +1,15 @@
+<p>
+  list works!
+</p>
+<div class="row">
+  <div class="col-md-10">
+    <ul class="list-group">
+      <li class="list-group-item"
+        *ngFor="let movie of movies"
+        (click)="selectMovie(movie)"
+        [class.active]="movie === selectedMovie">
+        {{movie.name}}
+      </li>
+    </ul>
+  </div>
+</div>
