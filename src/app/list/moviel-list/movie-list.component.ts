@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from './movie';
-import { ListService } from './list.service';
+import { Movie } from './../movie';
+import { MovieService } from './../movie-list.service';
 
 @Component({
-  selector: 'movie',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  providers: [ListService]
+  selector: 'movie-list',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.css'],
+  providers: [MovieService]
 })
 
-export class MovieListComponent implements OnInit {
+export class MovieComponent implements OnInit {
 
   movies: Movie[]
   selectedMovie: Movie
 
-  constructor(private movieService: ListService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
      this.movieService

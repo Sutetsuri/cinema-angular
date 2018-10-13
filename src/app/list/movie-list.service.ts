@@ -3,7 +3,7 @@ import { Movie } from './movie';
 import { Http, Response } from '@angular/http';
 
 @Injectable()
-export class ListService {
+export class MovieService {
     private listUrl = '/api/list';
 
     constructor (private http: Http) {}
