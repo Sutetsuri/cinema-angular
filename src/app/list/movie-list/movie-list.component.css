@@ -1,7 +1,8 @@
+*{list-style-type: none;}
+
 #wrapper {
   width: 80vw;
-  border: 1px solid black;
-  overflow: hidden; /* add this to contain floated children */
+  overflow: hidden;
 }
 #img {
   width: 200px;
@@ -9,4 +10,10 @@
 }
 #info {
   float: left;
+}
+#title {
+  font-size: 1.6em;
+}
+#time {
+  font-size: 1.2em;
 }

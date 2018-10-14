@@ -4,18 +4,24 @@
 <div class="row">
   <div class="col-md-10">
     <ul class="list-group">
-      <li class="list-group-item"
-        *ngFor="let movie of movies"
-        (click)="selectMovie(movie)"
-        [class.active]="movie === selectedMovie">
-        <div class="" id="wrapper">
-          <div class="" id="img">
+      <li
+        *ngFor="let movie of movies">
+        <div class="row-md-10" id="wrapper">
+          <div class="col-md-4" id="img">
               <img src={{movie.Images.EventMediumImagePortrait}} height="auto" width="200">
           </div>
-          <div class="" id="info">
-              <div>{{movie.Title}}</div>
-              <div><p>Original title: </p>{{movie.OriginalTitle}}</div>
-              <div><p>Genres: </p>{{movie.Genres}}</div>
+          <div class="col-md-8 ml-5" id="info">
+              <div id="title">{{movie.Title| slice:0:50}}</div>
+              <div>Original title: {{movie.OriginalTitle}}</div>
+              <div>Method: {{movie.PresentationMethod}} </div>
+              <div>Length: {{movie.LengthInMinutes}} min</div>
+              <div>Location: {{movie.TheatreAndAuditorium}} </div>
+              <div>Genres: {{movie.Genres}}</div>
+              <div id="time">Start: {{movie.dttmShowStart| slice:11:16}}, End: {{movie.dttmShowEnd| slice:11:16}} </div>
+              <div class="row justify-content-between ml-1">
+                <img src={{movie.RatingImageUrl}} height="auto" width="40">
+                <button class="btn btn-success">Tickets</button>
+              </div>
           </div>
 
         </div>
