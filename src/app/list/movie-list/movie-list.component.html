@@ -1,12 +1,20 @@
-<p>
-  list works!
-</p>
-<div class="row">
+<div class="col">
+    <div class="m-3">
+        <form [formGroup]="timeForm" class="row">
+          <p>Filter with day</p>
+            <select formControlName="timeControl" class="mx-2">
+              <option [value]="time" *ngFor="let time of times">
+                {{time | date:'fullDate'}}</option>
+            </select>
+            <button class="btn btn-primary btn-sm" (click)="onSubmit()">Go</button>
+           </form>
+      </div>
+
   <div class="col-md-10">
     <ul class="list-group">
       <li
         *ngFor="let movie of movies">
-        <div class="row-md-10" id="wrapper">
+        <div class="row-md-10 m-3" id="wrapper">
           <div class="col-md-4" id="img">
               <img src={{movie.Images.EventMediumImagePortrait}} height="auto" width="200">
           </div>
@@ -19,7 +27,7 @@
               <div>Genres: {{movie.Genres}}</div>
               <div id="time">Start: {{movie.dttmShowStart| slice:11:16}}, End: {{movie.dttmShowEnd| slice:11:16}} </div>
               <div class="row justify-content-between ml-1">
-                <img src={{movie.RatingImageUrl}} height="auto" width="40">
+                <img src={{movie.RatingImageUrl}} height="auto" width="auto">
                 <button class="btn btn-success">Tickets</button>
               </div>
           </div>
