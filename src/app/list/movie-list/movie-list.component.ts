@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -27,11 +28,13 @@ export class MovieComponent implements OnInit {
 
 
   ngOnInit() {
+    let today = new Date();
+    this.selectedTime = this.formatDate(formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2'));
     this.timeForm = this.fb.group({
       timeControl: [Date.now()]
     });
     this.getTimes()
-    this.getMovies(Date.now())
+    this.getMovies(this.selectedTime);
   }
 
   getTimes() {
@@ -43,12 +46,13 @@ export class MovieComponent implements OnInit {
 
         const xml = parser.parseFromString(data, 'text/xml');
         const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        this.times = obj.Dates.dateTime;
+        this.times = obj['Dates']['dateTime'];
         },
         error => console.log('oops', error))
   }
 
   getMovies(date) {
+    this.movies = [];
     this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=1018&dt='+date;
     const parser = new DOMParser();
     this.http.get(this.xml, {
@@ -57,19 +61,21 @@ export class MovieComponent implements OnInit {
 
         const xml = parser.parseFromString(data, 'text/xml');
         const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        this.movies = obj.Schedule.Shows.Show;
+        this.movies = obj['Schedule']['Shows']['Show'];
         console.log(this.movies);
         },
         error => console.log('oops', error))
   }
+  formatDate(inputDate) {
+    let year = inputDate.substring(0, 4);
+    let month = inputDate.substring(5, 7);
+    let day = inputDate.substring(8, 10);
+    let date = day + '.' + month + '.' + year;
+    return date;
+  }
   onSubmit() {
-    console.log(this.timeForm.value.timeControl);
     this.selectedTime = this.timeForm.value.timeControl;
-    let year = this.selectedTime.substring(0, 4);
-    let month = this.selectedTime.substring(5, 7);
-    let day = this.selectedTime.substring(8, 10);
-    let date = day+'.'+month+'.'+year;
-    console.log(date);
-    this.getMovies(date);
-   }
+    this.selectedTime = this.formatDate(this.selectedTime);
+    this.getMovies(this.selectedTime);
+  }
 }
