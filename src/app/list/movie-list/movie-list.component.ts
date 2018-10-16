@@ -36,7 +36,7 @@ export class MovieComponent implements OnInit {
     this.selectedPlace = {ID: '1018', Name: 'Oulu, Plaza'};
     this.timeForm = this.fb.group({
       timeControl: [Date.now()],
-      placeControl: ['Oulu']
+      placeControl: [{ID: '1018', Name: 'Oulu, Plaza'}]
     });
     this.getTimes();
     this.getAreas();
@@ -95,9 +95,11 @@ export class MovieComponent implements OnInit {
     return date;
   }
   onSubmit() {
-    this.selectedTime = this.timeForm.value.timeControl;
-    this.selectedPlace = this.timeForm.value.placeControl;
-    this.selectedTime = this.formatDate(this.selectedTime);
-    this.getMovies(this.selectedPlace.ID, this.selectedTime);
+    console.log(this.timeForm.value.timeControl, this.timeForm.value.placeControl);
+    if (this.timeForm.value.timeControl) {
+      this.selectedTime = this.formatDate(formatDate(this.timeForm.value.timeControl, 'yyyy-MM-dd', 'en-FI', '+2'));
+      this.selectedPlace = this.timeForm.value.placeControl;
+      this.getMovies(this.selectedPlace.ID, this.selectedTime);
+    }
   }
 }
