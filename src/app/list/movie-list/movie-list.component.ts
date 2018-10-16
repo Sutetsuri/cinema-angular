@@ -17,11 +17,12 @@ import { formatDate } from '@angular/common';
 
 export class MovieComponent implements OnInit {
   movies: Movie[];
-  selectedTime;
+  selectedTime: string;
   xml;
   timeForm: FormGroup;
   times;
-  selectedOption: string;
+  places;
+  selectedPlace;
 
 
   constructor(private http: HttpClient,
@@ -32,11 +33,14 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
     let today = new Date();
     this.selectedTime = this.formatDate(formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2'));
+    this.selectedPlace = {ID: '1018', Name: 'Oulu, Plaza'};
     this.timeForm = this.fb.group({
-      timeControl: [Date.now()]
+      timeControl: [Date.now()],
+      placeControl: ['Oulu']
     });
     this.getTimes();
-    this.getMovies(this.selectedTime);
+    this.getAreas();
+    this.getMovies(this.selectedPlace.ID, this.selectedTime);
   }
 
   getTimes() {
@@ -53,9 +57,24 @@ export class MovieComponent implements OnInit {
       error => console.log('oops', error));
   }
 
-  getMovies(date) {
+  getAreas() {
+    this.xml = 'https://www.finnkino.fi/xml/TheatreAreas/';
+    const parser = new DOMParser();
+    this.http.get(this.xml, {
+        responseType: 'text'
+      }).subscribe(data => {
+
+        const xml = parser.parseFromString(data, 'text/xml');
+        const obj = this.ngxXml2jsonService.xmlToJson(xml);
+        this.places = obj['TheatreAreas']['TheatreArea'];
+        console.log(this.places);
+        },
+        error => console.log('oops', error))
+  }
+
+  getMovies(city, date) {
     this.movies = [];
-    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=1018&dt=' + date;
+    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=' + city + '&dt=' + date;
     const parser = new DOMParser();
     this.http.get(this.xml, {
       responseType: 'text'
@@ -77,7 +96,8 @@ export class MovieComponent implements OnInit {
   }
   onSubmit() {
     this.selectedTime = this.timeForm.value.timeControl;
+    this.selectedPlace = this.timeForm.value.placeControl;
     this.selectedTime = this.formatDate(this.selectedTime);
-    this.getMovies(this.selectedTime);
+    this.getMovies(this.selectedPlace.ID, this.selectedTime);
   }
 }

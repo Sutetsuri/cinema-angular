@@ -1,7 +1,12 @@
 <div class="col">
-  <h2 class="m-3">Movies in Oulu, Plaza {{selectedTime}}</h2>
+  <h2 class="m-3">Movies in {{selectedPlace.Name}} {{selectedTime}}</h2>
     <div class="m-3">
         <form [formGroup]="timeForm" class="row">
+            <p>Filter with city</p>
+            <select formControlName="placeControl" class="mx-2">
+                <option [ngValue]="place" *ngFor="let place of places">
+                  {{place.Name}}</option>
+              </select>
           <p>Filter with day</p>
             <select formControlName="timeControl" class="mx-2">
               <option [value]="time" *ngFor="let time of times| slice:0:4;">
