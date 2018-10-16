@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-5">
+    <h2>Reservations</h2>
+    <ul class="list-group">
+      <li class="list-group-item"
+        *ngFor="let reservation of reservations"
+        (click)="selectReservation(reservation)"
+        [class.active]="reservation === selectedReservation">
+        {{reservation.MovieTitle}}
+      </li>
+    </ul>
+    <button class="btn btn-warning" (click)="createNewReservation()">New</button>
+  </div>
+  <div class="col-md-5 col-md-offset-2">
+    <app-reservation-details
+      [reservation]="selectedReservation"
+      [createHandler]="addReservation"
+      [updateHandler]="updateReservation"
+      [deleteHandler]="deleteReservation">
+    </app-reservation-details>
+  </div>
+</div>
