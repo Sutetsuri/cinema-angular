@@ -31,14 +31,14 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
     let today = new Date();
     this.selectedTime = this.formatDate(formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2'));
-    this.selectedPlace = 1018;
+    this.selectedPlace = {ID: '1018', Name: 'Oulu, Plaza'};
     this.timeForm = this.fb.group({
       timeControl: [Date.now()],
       placeControl: ['Oulu']
     });
     this.getTimes();
     this.getAreas();
-    this.getMovies(this.selectedPlace, this.selectedTime);
+    this.getMovies(this.selectedPlace.ID, this.selectedTime);
   }
 
   getTimes() {
@@ -95,7 +95,6 @@ export class MovieComponent implements OnInit {
   onSubmit() {
     this.selectedTime = this.timeForm.value.timeControl;
     this.selectedPlace = this.timeForm.value.placeControl;
-    console.log(this.selectedPlace);
     this.selectedTime = this.formatDate(this.selectedTime);
     this.getMovies(this.selectedPlace.ID, this.selectedTime);
   }

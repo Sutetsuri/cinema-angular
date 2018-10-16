@@ -4,7 +4,7 @@
         <form [formGroup]="timeForm" class="row">
             <p>Filter with city</p>
             <select formControlName="placeControl" class="mx-2">
-                <option [value]="place.ID" *ngFor="let place of places">
+                <option [ngValue]="place" *ngFor="let place of places">
                   {{place.Name}}</option>
               </select>
           <p>Filter with day</p>
