@@ -9,19 +9,20 @@ import { formatDate } from '@angular/common';
 
 
 @Component({
-  selector: 'movie-list',
+  selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
   providers: [MovieService]
 })
 
 export class MovieComponent implements OnInit {
-  movies: Movie[]
-  selectedTime
-  xml
-  timeForm: FormGroup
-  times
-  selectedOption: string
+  movies: Movie[];
+  selectedTime: string;
+  xml;
+  timeForm: FormGroup;
+  times;
+  places;
+  selectedPlace;
 
 
   constructor (private http: HttpClient, private ngxXml2jsonService: NgxXml2jsonService, movieService: MovieService, private fb: FormBuilder) { }
@@ -30,11 +31,14 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
     let today = new Date();
     this.selectedTime = this.formatDate(formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2'));
+    this.selectedPlace = 1018;
     this.timeForm = this.fb.group({
-      timeControl: [Date.now()]
+      timeControl: [Date.now()],
+      placeControl: ['Oulu']
     });
-    this.getTimes()
-    this.getMovies(this.selectedTime);
+    this.getTimes();
+    this.getAreas();
+    this.getMovies(this.selectedPlace, this.selectedTime);
   }
 
   getTimes() {
@@ -51,9 +55,24 @@ export class MovieComponent implements OnInit {
         error => console.log('oops', error))
   }
 
-  getMovies(date) {
+  getAreas() {
+    this.xml = 'https://www.finnkino.fi/xml/TheatreAreas/';
+    const parser = new DOMParser();
+    this.http.get(this.xml, {
+        responseType: 'text'
+      }).subscribe(data => {
+
+        const xml = parser.parseFromString(data, 'text/xml');
+        const obj = this.ngxXml2jsonService.xmlToJson(xml);
+        this.places = obj['TheatreAreas']['TheatreArea'];
+        console.log(this.places);
+        },
+        error => console.log('oops', error))
+  }
+
+  getMovies(city, date) {
     this.movies = [];
-    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=1018&dt='+date;
+    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area='+city+'&dt='+date;
     const parser = new DOMParser();
     this.http.get(this.xml, {
         responseType: 'text'
@@ -75,7 +94,9 @@ export class MovieComponent implements OnInit {
   }
   onSubmit() {
     this.selectedTime = this.timeForm.value.timeControl;
+    this.selectedPlace = this.timeForm.value.placeControl;
+    console.log(this.selectedPlace);
     this.selectedTime = this.formatDate(this.selectedTime);
-    this.getMovies(this.selectedTime);
+    this.getMovies(this.selectedPlace.ID, this.selectedTime);
   }
 }
