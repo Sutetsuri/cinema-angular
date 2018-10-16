@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Reservation } from './reservation';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ReservationService {
     private reservationsUrl = '/api/reservations';
 
-    constructor (private http: Http) {}
+    constructor (private http: HttpClient) {}
 
     // get("/api/reservations")
     getReservations(): Promise<void | Reservation[]> {
       return this.http.get(this.reservationsUrl)
                  .toPromise()
-                 .then(response => response.json() as Reservation[])
+                 .then(response => response as Reservation[])
                  .catch(this.handleError);
     }
 
@@ -20,7 +20,7 @@ export class ReservationService {
     createReservation(newReservation: Reservation): Promise<void | Reservation> {
       return this.http.post(this.reservationsUrl, newReservation)
                  .toPromise()
-                 .then(response => response.json() as Reservation)
+                 .then(response => response as Reservation)
                  .catch(this.handleError);
     }
 
@@ -30,7 +30,7 @@ export class ReservationService {
     deleteReservation(delReservationId: String): Promise<void | String> {
       return this.http.delete(this.reservationsUrl + '/' + delReservationId)
                  .toPromise()
-                 .then(response => response.json() as String)
+                 .then(response => response as String)
                  .catch(this.handleError);
     }
 
@@ -43,7 +43,7 @@ export class ReservationService {
       console.log(putUrl); // debug
       return this.http.put(putUrl, putReservation)
                  .toPromise()
-                 .then(response => response.json() as Reservation)
+                 .then(response => response as Reservation)
                  .catch(this.handleError);
     }
 
