@@ -9,22 +9,24 @@ import { formatDate } from '@angular/common';
 
 
 @Component({
-  selector: 'movie-list',
+  selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
   providers: [MovieService]
 })
 
 export class MovieComponent implements OnInit {
-  movies: Movie[]
-  selectedTime
-  xml
-  timeForm: FormGroup
-  times
-  selectedOption: string
+  movies: Movie[];
+  selectedTime;
+  xml;
+  timeForm: FormGroup;
+  times;
+  selectedOption: string;
 
 
-  constructor (private http: HttpClient, private ngxXml2jsonService: NgxXml2jsonService, movieService: MovieService, private fb: FormBuilder) { }
+  constructor(private http: HttpClient,
+    private ngxXml2jsonService: NgxXml2jsonService,
+    movieService: MovieService, private fb: FormBuilder) { }
 
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class MovieComponent implements OnInit {
     this.timeForm = this.fb.group({
       timeControl: [Date.now()]
     });
-    this.getTimes()
+    this.getTimes();
     this.getMovies(this.selectedTime);
   }
 
@@ -41,30 +43,30 @@ export class MovieComponent implements OnInit {
     this.xml = 'https://www.finnkino.fi/xml/ScheduleDates/';
     const parser = new DOMParser();
     this.http.get(this.xml, {
-        responseType: 'text'
-      }).subscribe(data => {
+      responseType: 'text'
+    }).subscribe(data => {
 
-        const xml = parser.parseFromString(data, 'text/xml');
-        const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        this.times = obj['Dates']['dateTime'];
-        },
-        error => console.log('oops', error))
+      const xml = parser.parseFromString(data, 'text/xml');
+      const obj = this.ngxXml2jsonService.xmlToJson(xml);
+      this.times = obj['Dates']['dateTime'];
+    },
+      error => console.log('oops', error));
   }
 
   getMovies(date) {
     this.movies = [];
-    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=1018&dt='+date;
+    this.xml = 'https://www.finnkino.fi/xml/Schedule/?area=1018&dt=' + date;
     const parser = new DOMParser();
     this.http.get(this.xml, {
-        responseType: 'text'
-      }).subscribe(data => {
+      responseType: 'text'
+    }).subscribe(data => {
 
-        const xml = parser.parseFromString(data, 'text/xml');
-        const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        this.movies = obj['Schedule']['Shows']['Show'];
-        console.log(this.movies);
-        },
-        error => console.log('oops', error))
+      const xml = parser.parseFromString(data, 'text/xml');
+      const obj = this.ngxXml2jsonService.xmlToJson(xml);
+      this.movies = obj['Schedule']['Shows']['Show'];
+      console.log(this.movies);
+    },
+      error => console.log('oops', error));
   }
   formatDate(inputDate) {
     let year = inputDate.substring(0, 4);
