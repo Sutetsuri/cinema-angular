@@ -28,8 +28,8 @@
         <!-- Structural directive - only visible on selection -->
         <div *ngIf="selected.length > 0" class="font14 marginTB10">
             <div class="wordWrap">SEATS RESERVED : {{selected.length}} <span class="count">({{selected}})</span></div>
-            <div>PRICE : {{ticketPrice}} * {{selected.length}} = {{currency}}.{{ticketPrice*selected.length}} </div>
-            <div>TOTAL : {{currency}}.{{ticketPrice * selected.length + convFee}}</div>
+            <div>PRICE : {{ticketPrice}} * {{selected.length}} = {{currency}} {{ticketPrice*selected.length}} </div>
+            <div>TOTAL : {{currency}} {{ticketPrice * selected.length + convFee}}</div>
         </div>
 
         <!-- Action buttons -->

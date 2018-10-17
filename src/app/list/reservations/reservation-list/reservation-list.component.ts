@@ -43,10 +43,12 @@ export class ReservationListComponent implements OnInit {
 
   createNewReservation() {
     var reservation: Reservation = {
-      MovieTitle: '',
-      MovieOriginalTitle: '',
-      TheatreAndAuditorium: '',
-      Seat: '',
+      eventId: '',
+      movieTitle: '',
+      movieOriginalTitle: '',
+      picture: '',
+      theatreAndAuditorium: '',
+      seat: '',
       dttmShowStart: ''
     };
 
