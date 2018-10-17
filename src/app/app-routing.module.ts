@@ -6,8 +6,8 @@ import { MovieComponent } from './list/movie-list/movie-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/movies', pathMatch: 'full' },
-  { path: 'movies', component: MovieComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: MovieComponent },
   { path: 'reservations', component: ReservationListComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
