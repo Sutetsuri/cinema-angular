@@ -15,8 +15,6 @@ export class ReservationDetailsComponent {
   @Input()
   createHandler: Function;
   @Input()
-  updateHandler: Function;
-  @Input()
   deleteHandler: Function;
 
   constructor (private reservationService: ReservationService) {}
@@ -24,12 +22,6 @@ export class ReservationDetailsComponent {
   createReservation(reservation: Reservation) {
     this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
       this.createHandler(newReservation);
-    });
-  }
-
-  updateReservation(reservation: Reservation): void {
-    this.reservationService.updateReservation(reservation).then((updatedReservation: Reservation) => {
-      this.updateHandler(updatedReservation);
     });
   }
 

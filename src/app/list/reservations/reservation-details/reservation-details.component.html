@@ -27,7 +27,6 @@
       <input class="form-control" name="reservation-datetime" [(ngModel)]="reservation.dttmShowStart" placeholder="whatever format it comes in"/>
     </div>
     <button class="btn btn-primary" *ngIf="!reservation._id" (click)="createReservation(reservation)">Create</button>
-    <button class="btn btn-info" *ngIf="reservation._id" (click)="updateReservation(reservation)">Update</button>
     <button class="btn btn-danger" *ngIf="reservation._id" (click)="deleteReservation(reservation._id)">Delete</button>
   </form>
 </div>

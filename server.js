@@ -75,7 +75,6 @@ app.post("/api/reservations", function(req, res) {
 
 /*  "/api/reservations/:id"
  *    GET: find reservation by id
- *    PUT: update reservation by id
  *    DELETE: deletes reservation by id
  */
 
@@ -85,24 +84,6 @@ app.get("/api/reservations/:id", function(req, res) {
       handleError(res, err.message, "Failed to get reservation");
     } else {
       res.status(200).json(doc);
-    }
-  });
-});
-
-app.put("/api/reservations/:id", function(req, res) {
-  console.log(req.body); // debug
-  var updateDoc = req.body;
-  console.log(updateDoc); // debug
-  delete updateDoc._id;
-  console.log(updateDoc._id); // debug
-
-  db.collection(RESERVATIONS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
-    if (err) {
-      console.log(_id); // debug
-      handleError(res, err.message, "Failed to update reservation");
-    } else {
-      updateDoc._id = req.params.id;
-      res.status(200).json(updateDoc);
     }
   });
 });
