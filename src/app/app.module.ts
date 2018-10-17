@@ -11,8 +11,10 @@ import { ReservationListComponent } from './list/reservations/reservation-list/r
 import { ReservationDetailsComponent } from './list/reservations/reservation-details/reservation-details.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SeatsComponent } from './list/seats/seats.component';
 
 import { AppRoutingModule } from './app-routing.module';
+
 
 
 
@@ -23,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
     ReservationListComponent,
     ReservationDetailsComponent,
     CarouselComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SeatsComponent
   ],
   imports: [
     BrowserModule,
