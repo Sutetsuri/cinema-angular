@@ -10,8 +10,10 @@ import { MovieComponent } from './list/movie-list/movie-list.component';
 import { ReservationListComponent } from './list/reservations/reservation-list/reservation-list.component';
 import { ReservationDetailsComponent } from './list/reservations/reservation-details/reservation-details.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     MovieComponent,
     ReservationListComponent,
     ReservationDetailsComponent,
-    CarouselComponent
+    CarouselComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

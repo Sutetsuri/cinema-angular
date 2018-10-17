@@ -32,12 +32,13 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     let today = new Date();
-    this.selectedTime = this.formatDate(formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2'));
-    this.selectedPlace = {ID: '1018', Name: 'Oulu, Plaza'};
+    this.selectedTime = formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2');
+    this.selectedPlace = {ID: '1018', Name: 'Oulu: PLAZA'};
     this.timeForm = this.fb.group({
-      timeControl: [Date.now()],
-      placeControl: [{ID: '1018', Name: 'Oulu, Plaza'}]
+      timeControl: [this.selectedTime],
+      placeControl: [this.selectedPlace]
     });
+    this.selectedTime = this.formatDate(this.selectedTime);
     this.getTimes();
     this.getAreas();
     this.getMovies(this.selectedPlace.ID, this.selectedTime);
@@ -95,9 +96,8 @@ export class MovieComponent implements OnInit {
     return date;
   }
   onSubmit() {
-    console.log(this.timeForm.value.timeControl, this.timeForm.value.placeControl);
     if (this.timeForm.value.timeControl) {
-      this.selectedTime = this.formatDate(formatDate(this.timeForm.value.timeControl, 'yyyy-MM-dd', 'en-FI', '+2'));
+      this.selectedTime = this.formatDate(this.timeForm.value.timeControl);
       this.selectedPlace = this.timeForm.value.placeControl;
       this.getMovies(this.selectedPlace.ID, this.selectedTime);
     }
