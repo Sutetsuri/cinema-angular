@@ -68,26 +68,4 @@ export class ReservationListComponent implements OnInit {
     this.selectReservation(reservation);
     return this.reservations;
   }
-
-  updateReservation = (reservation: Reservation) => { // can't get the reservation, gets undefined
-    console.log(reservation); // debug
-    console.log(this.reservations); // debug
-    console.log(this.selectedReservation); // debug
-    console.log(reservation._id); // debug
-    console.log('meme'); // debug
-    var idx = this.getIndexOfReservation(reservation._id);
-    console.log('meme'); // debug
-    console.log(idx); // debug
-    if (idx !== -1) {
-      console.log('meme'); // debug
-      this.reservations[idx] = reservation;
-      console.log(reservation); // debug
-      this.selectReservation(reservation);
-      console.log('meme'); // debug
-    }
-    console.log(reservation); // debug
-    console.log('meme'); // debug
-    console.log(this.reservations); // debug
-    return this.reservations;
-  }
 }

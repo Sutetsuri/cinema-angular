@@ -34,18 +34,7 @@ export class ReservationService {
                  .catch(this.handleError);
     }
 
-    // put("/api/reservations/:id")
-    updateReservation(putReservation: Reservation): Promise<void | Reservation> {
-      console.log(putReservation); // debug
-      console.log(this.reservationsUrl); // debug
-      console.log(putReservation._id); // debug
-      var putUrl = this.reservationsUrl + '/' + putReservation._id;
-      console.log(putUrl); // debug
-      return this.http.put(putUrl, putReservation)
-                 .toPromise()
-                 .then(response => response as Reservation)
-                 .catch(this.handleError);
-    }
+    // put("/api/reservations/:id") endpoint is removed for the sake of the team sanity
 
     private handleError (error: any) {
       let errMsg = (error.message) ? error.message :
