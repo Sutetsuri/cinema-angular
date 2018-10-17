@@ -57,11 +57,11 @@ export class SeatsComponent implements OnInit {
   };
 
   // Buy button handler
-  showSelected = function() {
-      if (this.selected.length > 0) {
-          alert('Selected Seats: ' + this.selected + '\nTotal: ' + (this.ticketPrice * this.selected.length + this.convFee));
-      } else {
-          alert('No seats selected!');
-      }
-  }
+  showSelected = function () {
+    if (this.selected.length > 0) {
+      alert('Selected Seats: ' + this.selected + '\nTotal: ' + (this.ticketPrice * this.selected.length + this.convFee));
+    } else {
+      alert('No seats selected!');
+    }
+  };
 }
