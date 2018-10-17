@@ -11,6 +11,8 @@ import { ReservationListComponent } from './list/reservations/reservation-list/r
 import { ReservationDetailsComponent } from './list/reservations/reservation-details/reservation-details.component';
 import { CarouselComponent } from './carousel/carousel.component';
 
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
