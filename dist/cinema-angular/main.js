@@ -5421,8 +5421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./list/reservations/reservation-list/reservation-list.component */ "./src/app/list/reservations/reservation-list/reservation-list.component.ts");
 /* harmony import */ var _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list/movie-list/movie-list.component */ "./src/app/list/movie-list/movie-list.component.ts");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
-/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
+/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5434,12 +5433,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var routes = [
     { path: '', component: _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__["MovieComponent"] },
     { path: 'reservations', component: _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_2__["ReservationListComponent"] },
-    { path: 'reserve', component: _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_5__["SeatsComponent"] },
-    { path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_4__["PageNotFoundComponent"] }
+    { path: 'reserve', component: _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_4__["SeatsComponent"] }
+    // { path: '**', component: PageNotFoundComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -6115,6 +6113,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var SeatsComponent = /** @class */ (function () {
     function SeatsComponent(reservationService, movieService, router) {
+        var _this = this;
         this.reservationService = reservationService;
         this.movieService = movieService;
         this.router = router;
@@ -6130,6 +6129,10 @@ var SeatsComponent = /** @class */ (function () {
         this.convFee = 30;
         this.totalPrice = 0;
         this.currency = '$';
+        this.createReservation = function (reservation) {
+            _this.reservations.push(reservation);
+            return _this.reservations;
+        };
         // return status of each seat
         this.getStatus = function (seatPos) {
             if (this.reservedSeats.indexOf(seatPos) !== -1) {
@@ -6160,6 +6163,7 @@ var SeatsComponent = /** @class */ (function () {
         };
     }
     SeatsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.movieForReservation = this.movieService.getMovieData();
         if (!this.movieForReservation) {
             this.router.navigate(['']);
@@ -6181,11 +6185,12 @@ var SeatsComponent = /** @class */ (function () {
             this.time = this.movieForReservation.dttmShowStart;
             /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
         }
-    };
-    SeatsComponent.prototype.createReservation = function (reservation) {
-        var _this = this;
-        this.reservationService.createReservation(reservation).then(function (newReservation) {
-            _this.createHandler(newReservation);
+        this.reservationService
+            .getReservations()
+            .then(function (reservations) {
+            _this.reservations = reservations.map(function (reservation) {
+                return reservation;
+            });
         });
     };
     __decorate([

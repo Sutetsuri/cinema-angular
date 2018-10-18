@@ -9,8 +9,8 @@ import { SeatsComponent } from './list/reservations/seats/seats.component';
 const routes: Routes = [
   { path: '', component: MovieComponent },
   { path: 'reservations', component: ReservationListComponent },
-  { path: 'reserve', component: SeatsComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'reserve', component: SeatsComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
