@@ -10,7 +10,7 @@ var app = express();
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
-var distDir = __dirname + "/dist/";
+var distDir =path.join( __dirname , "dist");
 app.use(express.static(distDir));
 
 app.get('/*', function(req,res) {
