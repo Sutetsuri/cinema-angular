@@ -6093,10 +6093,9 @@ module.exports = "<div class=\"container\">\r\n    <main class=\"innerContainer\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SeatsComponent", function() { return SeatsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _reservation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reservation */ "./src/app/list/reservations/reservation.ts");
-/* harmony import */ var _reservation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reservation.service */ "./src/app/list/reservations/reservation.service.ts");
-/* harmony import */ var _movie_list_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../movie-list.service */ "./src/app/list/movie-list.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _reservation_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reservation.service */ "./src/app/list/reservations/reservation.service.ts");
+/* harmony import */ var _movie_list_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../movie-list.service */ "./src/app/list/movie-list.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6106,7 +6105,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -6129,9 +6127,8 @@ var SeatsComponent = /** @class */ (function () {
         this.convFee = 30;
         this.totalPrice = 0;
         this.currency = '$';
-        this.createReservation = function (reservation) {
+        this.addReservation = function (reservation) {
             _this.reservations.push(reservation);
-            return _this.reservations;
         };
         // return status of each seat
         this.getStatus = function (seatPos) {
@@ -6164,13 +6161,20 @@ var SeatsComponent = /** @class */ (function () {
     }
     SeatsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.reservationService
+            .getReservations()
+            .then(function (reservations) {
+            _this.reservations = reservations.map(function (reservation) {
+                return reservation;
+            });
+        });
         this.movieForReservation = this.movieService.getMovieData();
         if (!this.movieForReservation) {
             this.router.navigate(['']);
         }
         else {
             console.log(this.movieForReservation);
-            var reservation = {
+            this.reservation = {
                 eventId: this.movieForReservation.EventID,
                 movieTitle: this.movieForReservation.Title,
                 movieOriginalTitle: this.movieForReservation.OriginalTitle,
@@ -6185,29 +6189,14 @@ var SeatsComponent = /** @class */ (function () {
             this.time = this.movieForReservation.dttmShowStart;
             /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
         }
-        this.reservationService
-            .getReservations()
-            .then(function (reservations) {
-            _this.reservations = reservations.map(function (reservation) {
-                return reservation;
-            });
-        });
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _reservation__WEBPACK_IMPORTED_MODULE_1__["Reservation"])
-    ], SeatsComponent.prototype, "reservation", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Function)
-    ], SeatsComponent.prototype, "createHandler", void 0);
     SeatsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-seats',
             template: __webpack_require__(/*! ./seats.component.html */ "./src/app/list/reservations/seats/seats.component.html"),
             styles: [__webpack_require__(/*! ./seats.component.css */ "./src/app/list/reservations/seats/seats.component.css")]
         }),
-        __metadata("design:paramtypes", [_reservation_service__WEBPACK_IMPORTED_MODULE_2__["ReservationService"], _movie_list_service__WEBPACK_IMPORTED_MODULE_3__["MovieService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        __metadata("design:paramtypes", [_reservation_service__WEBPACK_IMPORTED_MODULE_1__["ReservationService"], _movie_list_service__WEBPACK_IMPORTED_MODULE_2__["MovieService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], SeatsComponent);
     return SeatsComponent;
 }());
