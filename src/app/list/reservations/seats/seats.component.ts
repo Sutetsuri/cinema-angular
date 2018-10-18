@@ -17,6 +17,7 @@ export class SeatsComponent implements OnInit {
 
   reserved: string[] = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
   selected: string[] = [];
+  previous: string;
 
   ticketPrice: number = 120;
   convFee: number = 30;
@@ -44,7 +45,7 @@ export class SeatsComponent implements OnInit {
   // click handler
   seatClicked = function (seatPos: string) {
     var index = this.selected.indexOf(seatPos);
-
+    this.previous = seatPos;
     if (index !== -1) {
       // seat already selected, remove
       this.selected.splice(index, 1);
