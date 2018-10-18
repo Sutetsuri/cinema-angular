@@ -42,9 +42,7 @@ export class SeatsComponent implements OnInit {
     this.reservationService
       .getReservations()
       .then((reservations: Reservation[]) => {
-        this.reservations = reservations.map((reservation) => {
-          return reservation;
-        });
+        this.reservations = reservations;
       });
 
     this.movieForReservation = this.movieService.getMovieData();
@@ -52,6 +50,7 @@ export class SeatsComponent implements OnInit {
       this.router.navigate(['']);
     } else {
       console.log(this.movieForReservation);
+      // reservation to pass
       this.reservation = {
         eventId: this.movieForReservation.EventID,
         movieTitle: this.movieForReservation.Title,
@@ -68,8 +67,16 @@ export class SeatsComponent implements OnInit {
       /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
     }
   }
+
+  createReservation(reservation: Reservation) {
+    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
+      this.addReservation(newReservation);
+    });
+  }
+
   addReservation = (reservation: Reservation) => {
     this.reservations.push(reservation);
+    return this.reservations;
   }
 
   // return status of each seat

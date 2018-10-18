@@ -6129,6 +6129,7 @@ var SeatsComponent = /** @class */ (function () {
         this.currency = '$';
         this.addReservation = function (reservation) {
             _this.reservations.push(reservation);
+            return _this.reservations;
         };
         // return status of each seat
         this.getStatus = function (seatPos) {
@@ -6164,9 +6165,7 @@ var SeatsComponent = /** @class */ (function () {
         this.reservationService
             .getReservations()
             .then(function (reservations) {
-            _this.reservations = reservations.map(function (reservation) {
-                return reservation;
-            });
+            _this.reservations = reservations;
         });
         this.movieForReservation = this.movieService.getMovieData();
         if (!this.movieForReservation) {
@@ -6174,6 +6173,7 @@ var SeatsComponent = /** @class */ (function () {
         }
         else {
             console.log(this.movieForReservation);
+            // reservation to pass
             this.reservation = {
                 eventId: this.movieForReservation.EventID,
                 movieTitle: this.movieForReservation.Title,
@@ -6189,6 +6189,12 @@ var SeatsComponent = /** @class */ (function () {
             this.time = this.movieForReservation.dttmShowStart;
             /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
         }
+    };
+    SeatsComponent.prototype.createReservation = function (reservation) {
+        var _this = this;
+        this.reservationService.createReservation(reservation).then(function (newReservation) {
+            _this.addReservation(newReservation);
+        });
     };
     SeatsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
