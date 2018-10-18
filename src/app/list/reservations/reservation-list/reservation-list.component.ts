@@ -15,8 +15,6 @@ export class ReservationListComponent implements OnInit {
   reservations: Reservation[];
   selectedReservation: Reservation;
 
-  movieForReservation: any;
-
   constructor(private reservationService: ReservationService) {}
 
   ngOnInit() {

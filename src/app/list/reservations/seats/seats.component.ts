@@ -49,8 +49,9 @@ export class SeatsComponent implements OnInit {
     this.movieForReservation = this.movieService.getMovieData();
     if (!this.movieForReservation) {
       this.router.navigate(['']);
+    } else {
+      console.log(this.movieForReservation);
     }
-    console.log(this.movieForReservation);
     this.movieTitle = this.movieForReservation.Title;
     this.screen = this.movieForReservation.TheatreAndAuditorium;
     this.time = this.movieForReservation.dttmShowStart;
