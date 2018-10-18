@@ -5807,7 +5807,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n      <h3>{{reservation.movieTitle}}</h3>\r\n      <div>Original title: {{reservation.movieOriginalTitle}}</div>\r\n      <div>Place: {{reservation.theatreAndAuditorium}}</div>\r\n      <div>Length: {{reservation.length}} min</div>\r\n      <div>Seats: {{reservation.seat}}</div>\r\n      <div>Starting time: {{reservation.dttmShowStart |date:'medium'}}</div>\r\n    <button class=\"btn btn-danger m-3\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n  </form>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n      <h3>{{reservation.movieTitle}}</h3>\r\n      <div>{{reservation.picture}}</div>\r\n      <div>Original title: {{reservation.movieOriginalTitle}}</div>\r\n      <div>Place: {{reservation.theatreAndAuditorium}}</div>\r\n      <div>Length: {{reservation.length}} min</div>\r\n      <div>Seats: {{reservation.seat}}</div>\r\n      <div>Starting time: {{reservation.dttmShowStart |date:'medium'}}</div>\r\n    <button class=\"btn btn-danger mt-2\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n\r\n  </form>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6126,7 +6126,7 @@ var SeatsComponent = /** @class */ (function () {
         this.reservedSeats = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
         this.selectedSeats = [];
         this.ticketPrice = 12;
-        this.convFee = 30;
+        this.convFee = 2;
         this.totalPrice = 0;
         this.currency = '$';
         this.addReservation = function (reservation) {

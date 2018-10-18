@@ -32,7 +32,7 @@ export class SeatsComponent implements OnInit {
   previousSeat: string;
 
   ticketPrice: number = 12;
-  convFee: number = 30;
+  convFee: number = 2;
   totalPrice: number = 0;
   currency: string = '$';
 
