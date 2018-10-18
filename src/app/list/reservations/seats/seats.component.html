@@ -28,16 +28,16 @@
         </div>
 
         <!-- Structural directive - only visible on selection -->
-        <div *ngIf="selected.length > 0" class="font14 marginTB10">
-            <div class="wordWrap">SEATS RESERVED : {{selected.length}} <span class="count">({{previous}})</span></div>
-            <div>PRICE : {{ticketPrice}} * {{selected.length}} = {{currency}} {{ticketPrice*selected.length}} </div>
-            <div>TOTAL : {{currency}} {{ticketPrice * selected.length + convFee}}</div>
+        <div *ngIf="selectedSeats.length > 0" class="font14 marginTB10">
+            <div class="wordWrap">SEATS RESERVED : {{selectedSeats.length}} <span class="count">({{previousSeat}})</span></div>
+            <div>PRICE : {{ticketPrice}} * {{selectedSeats.length}} = {{currency}} {{ticketPrice*selectedSeats.length}} </div>
+            <div>TOTAL : {{currency}} {{ticketPrice * selectedSeats.length + convFee}}</div>
         </div>
 
         <!-- Action buttons -->
         <div class="buttonBar marginTop5">
-            <button (click)="clearSelected()" [disabled]="selected.length === 0" class="btn btn-default btn-sm">Clear</button>
-            <button (click)="createReservation(reservation)" [disabled]="selected.length === 0" class="btn btn-success btn-sm">Buy Tickets</button>
+            <button (click)="clearSelected()" [disabled]="selectedSeats.length === 0" class="btn btn-default btn-sm">Clear</button>
+            <button (click)="createReservation(reservation)" [disabled]="selectedSeats.length === 0" class="btn btn-success btn-sm">Reserve Seats</button>
         </div>
     </main>
 </div>

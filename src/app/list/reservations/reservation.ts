@@ -5,6 +5,7 @@ export class Reservation {
   movieOriginalTitle: string;
   picture: string;
   theatreAndAuditorium: string;
-  seat: string;
+  length: string;
+  seat: string[];
   dttmShowStart: string;
 }

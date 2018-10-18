@@ -29,9 +29,9 @@ export class SeatsComponent implements OnInit {
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   cols: number[]  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  reserved: string[] = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
-  selected: string[] = [];
-  previous: string;
+  reservedSeats: string[] = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
+  selectedSeats: string[] = [];
+  previousSeat: string;
 
   ticketPrice: number = 12;
   convFee: number = 30;
@@ -40,58 +40,68 @@ export class SeatsComponent implements OnInit {
 
   constructor (private reservationService: ReservationService, private movieService: MovieService, private router: Router) {}
 
-  createReservation(reservation: Reservation) {
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
-      this.createHandler(newReservation);
-    });
-  }
-
   ngOnInit() {
     this.movieForReservation = this.movieService.getMovieData();
     if (!this.movieForReservation) {
       this.router.navigate(['']);
     } else {
       console.log(this.movieForReservation);
+      var reservation: Reservation = {
+        eventId: this.movieForReservation.EventID,
+        movieTitle: this.movieForReservation.Title,
+        movieOriginalTitle: this.movieForReservation.OriginalTitle,
+        picture: this.movieForReservation.Images.EventSmallImagePortrait,
+        theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
+        length: this.movieForReservation.LengthInMinutes,
+        seat: this.selectedSeats,
+        dttmShowStart: this.movieForReservation.dttmShowStart
+      };
+      this.movieTitle = this.movieForReservation.Title;
+      this.screen = this.movieForReservation.TheatreAndAuditorium;
+      this.time = this.movieForReservation.dttmShowStart;
+      /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
     }
-    this.movieTitle = this.movieForReservation.Title;
-    this.screen = this.movieForReservation.TheatreAndAuditorium;
-    this.time = this.movieForReservation.dttmShowStart;
-    /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
+  }
+
+  createReservation(reservation: Reservation) {
+    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
+      this.createHandler(newReservation);
+    });
   }
 
   // return status of each seat
   getStatus = function (seatPos: string) {
-    if (this.reserved.indexOf(seatPos) !== -1) {
+    if (this.reservedSeats.indexOf(seatPos) !== -1) {
       return 'reserved';
-    } else if (this.selected.indexOf(seatPos) !== -1) {
+    } else if (this.selectedSeats.indexOf(seatPos) !== -1) {
       return 'selected';
     }
   };
 
   // clear handler
   clearSelected = function () {
-    this.selected = [];
+    this.selectedSeats = [];
   };
 
   // click handler
   seatClicked = function (seatPos: string) {
-    var index = this.selected.indexOf(seatPos);
-    this.previous = seatPos;
+    var index = this.selectedSeats.indexOf(seatPos);
+    this.previousSeat = seatPos;
     if (index !== -1) {
       // seat already selected, remove
-      this.selected.splice(index, 1);
+      this.selectedSeats.splice(index, 1);
     } else {
       // push to selected array only if it is not reserved
-      if (this.reserved.indexOf(seatPos) === -1) {
-        this.selected.push(seatPos);
+      if (this.reservedSeats.indexOf(seatPos) === -1) {
+        this.selectedSeats.push(seatPos);
       }
     }
   };
 
   // // Buy button handler
   // showSelected = function () {
-  //   if (this.selected.length > 0) {
-  //     alert('Selected Seats: ' + this.selected + '\nTotal: ' + (this.ticketPrice * this.selected.length + this.convFee));
+  //   if (this.selectedSeats.length > 0) {
+  //     alert('Selected Seats: ' + this.selectedSeats + '\nTotal: ' + (this.ticketPrice * this.selectedSeats.length + this.convFee));
   //   } else {
   //     alert('No seats selected!');
   //   }

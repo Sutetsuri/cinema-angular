@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './list/movie-list/movie-list.component';
 import { ReservationListComponent } from './list/reservations/reservation-list/reservation-list.component';
 import { ReservationDetailsComponent } from './list/reservations/reservation-details/reservation-details.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SeatsComponent } from './list/reservations/seats/seats.component';
 
@@ -25,7 +24,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     MovieComponent,
     ReservationListComponent,
     ReservationDetailsComponent,
-    CarouselComponent,
     PageNotFoundComponent,
     SeatsComponent,
     NavbarComponent

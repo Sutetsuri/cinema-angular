@@ -5539,18 +5539,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./list/movie-list/movie-list.component */ "./src/app/list/movie-list/movie-list.component.ts");
 /* harmony import */ var _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./list/reservations/reservation-list/reservation-list.component */ "./src/app/list/reservations/reservation-list/reservation-list.component.ts");
 /* harmony import */ var _list_reservations_reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./list/reservations/reservation-details/reservation-details.component */ "./src/app/list/reservations/reservation-details/reservation-details.component.ts");
-/* harmony import */ var _carousel_carousel_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./carousel/carousel.component */ "./src/app/carousel/carousel.component.ts");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
-/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -5575,10 +5573,9 @@ var AppModule = /** @class */ (function () {
                 _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_6__["MovieComponent"],
                 _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_7__["ReservationListComponent"],
                 _list_reservations_reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_8__["ReservationDetailsComponent"],
-                _carousel_carousel_component__WEBPACK_IMPORTED_MODULE_9__["CarouselComponent"],
-                _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_10__["PageNotFoundComponent"],
-                _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_11__["SeatsComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__["NavbarComponent"]
+                _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_9__["PageNotFoundComponent"],
+                _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_10__["SeatsComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_12__["NavbarComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -5586,76 +5583,13 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_12__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/carousel/carousel.component.css":
-/*!*************************************************!*\
-  !*** ./src/app/carousel/carousel.component.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/carousel/carousel.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/carousel/carousel.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  carousel works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/carousel/carousel.component.ts":
-/*!************************************************!*\
-  !*** ./src/app/carousel/carousel.component.ts ***!
-  \************************************************/
-/*! exports provided: CarouselComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CarouselComponent", function() { return CarouselComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var CarouselComponent = /** @class */ (function () {
-    function CarouselComponent() {
-    }
-    CarouselComponent.prototype.ngOnInit = function () {
-    };
-    CarouselComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-carousel',
-            template: __webpack_require__(/*! ./carousel.component.html */ "./src/app/carousel/carousel.component.html"),
-            styles: [__webpack_require__(/*! ./carousel.component.css */ "./src/app/carousel/carousel.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], CarouselComponent);
-    return CarouselComponent;
 }());
 
 
@@ -5873,7 +5807,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n  </form>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"reservation\" class=\"row\">\n  <div class=\"col-md-12\">\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\n  </div>\n</div>\n<div *ngIf=\"reservation\" class=\"row\">\n  <form class=\"col-md-12\">\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -5953,7 +5887,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-5\">\r\n    <h2>Reservations</h2>\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\"\r\n        *ngFor=\"let reservation of reservations\"\r\n        (click)=\"selectReservation(reservation)\"\r\n        [class.active]=\"reservation === selectedReservation\">\r\n        {{reservation.movieTitle}}\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"col-md-5 col-md-offset-2\">\r\n    <app-reservation-details\r\n      [reservation]=\"selectedReservation\"\r\n      [deleteHandler]=\"deleteReservation\">\r\n    </app-reservation-details>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-5\">\n    <h2>Reservations</h2>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\"\n        *ngFor=\"let reservation of reservations\"\n        (click)=\"selectReservation(reservation)\"\n        [class.active]=\"reservation === selectedReservation\">\n        {{reservation.movieTitle}}\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-md-5 col-md-offset-2\">\n    <app-reservation-details\n      [reservation]=\"selectedReservation\"\n      [deleteHandler]=\"deleteReservation\">\n    </app-reservation-details>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6146,7 +6080,7 @@ module.exports = ".font14 {\r\n  font-size: 14px;\r\n}\r\n.font16 {\r\n  font-si
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <main class=\"innerContainer\">\r\n        <div class=\"movie\">\r\n            <h3 class=\"movieTitle\">{{movieTitle}}</h3>\r\n            <div class=\"movieDetails\">{{screen}} - {{time | date: 'medium'}}</div>\r\n            <!-- <img src=\"{{image}}\" height=\"auto\" width=\"auto\"> -->\r\n\r\n        </div>\r\n\r\n        <!-- Showing a static legend bar -->\r\n        <div class=\"legend\">\r\n            <span class=\"oi oi-target freeSeat\"></span> FREE\r\n            <span class=\"oi oi-ban reservedSeat\"></span> TAKEN\r\n            <span class=\"oi oi-check selectedSeat\"></span> SELECTED\r\n        </div>\r\n\r\n        <p class=\"font14 marginTop5\">SCREEN THIS WAY</p>\r\n        <div class=\"screen\"></div>\r\n\r\n        <!-- Generate the seating grid -->\r\n        <div *ngFor=\"let row of rows\">\r\n            <span class=\"seat\" *ngFor=\"let col of cols\" (click)=\"seatClicked(row + col)\"\r\n                    [ngSwitch]=\"getStatus(row + col)\">\r\n                <span *ngSwitchCase=\"'selected'\" class=\"oi oi-check selectedSeat\"></span>\r\n                <span *ngSwitchCase=\"'reserved'\" class=\"oi oi-ban reservedSeat\"></span>\r\n                <span *ngSwitchDefault class=\"oi oi-target freeSeat\"></span>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- Structural directive - only visible on selection -->\r\n        <div *ngIf=\"selected.length > 0\" class=\"font14 marginTB10\">\r\n            <div class=\"wordWrap\">SEATS RESERVED : {{selected.length}} <span class=\"count\">({{previous}})</span></div>\r\n            <div>PRICE : {{ticketPrice}} * {{selected.length}} = {{currency}} {{ticketPrice*selected.length}} </div>\r\n            <div>TOTAL : {{currency}} {{ticketPrice * selected.length + convFee}}</div>\r\n        </div>\r\n\r\n        <!-- Action buttons -->\r\n        <div class=\"buttonBar marginTop5\">\r\n            <button (click)=\"clearSelected()\" [disabled]=\"selected.length === 0\" class=\"btn btn-default btn-sm\">Clear</button>\r\n            <button (click)=\"createReservation(reservation)\" [disabled]=\"selected.length === 0\" class=\"btn btn-success btn-sm\">Buy Tickets</button>\r\n        </div>\r\n    </main>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <main class=\"innerContainer\">\r\n        <div class=\"movie\">\r\n            <h3 class=\"movieTitle\">{{movieTitle}}</h3>\r\n            <div class=\"movieDetails\">{{screen}} - {{time | date: 'medium'}}</div>\r\n            <!-- <img src=\"{{image}}\" height=\"auto\" width=\"auto\"> -->\r\n\r\n        </div>\r\n\r\n        <!-- Showing a static legend bar -->\r\n        <div class=\"legend\">\r\n            <span class=\"oi oi-target freeSeat\"></span> FREE\r\n            <span class=\"oi oi-ban reservedSeat\"></span> TAKEN\r\n            <span class=\"oi oi-check selectedSeat\"></span> SELECTED\r\n        </div>\r\n\r\n        <p class=\"font14 marginTop5\">SCREEN THIS WAY</p>\r\n        <div class=\"screen\"></div>\r\n\r\n        <!-- Generate the seating grid -->\r\n        <div *ngFor=\"let row of rows\">\r\n            <span class=\"seat\" *ngFor=\"let col of cols\" (click)=\"seatClicked(row + col)\"\r\n                    [ngSwitch]=\"getStatus(row + col)\">\r\n                <span *ngSwitchCase=\"'selected'\" class=\"oi oi-check selectedSeat\"></span>\r\n                <span *ngSwitchCase=\"'reserved'\" class=\"oi oi-ban reservedSeat\"></span>\r\n                <span *ngSwitchDefault class=\"oi oi-target freeSeat\"></span>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- Structural directive - only visible on selection -->\r\n        <div *ngIf=\"selectedSeats.length > 0\" class=\"font14 marginTB10\">\r\n            <div class=\"wordWrap\">SEATS RESERVED : {{selectedSeats.length}} <span class=\"count\">({{previousSeat}})</span></div>\r\n            <div>PRICE : {{ticketPrice}} * {{selectedSeats.length}} = {{currency}} {{ticketPrice*selectedSeats.length}} </div>\r\n            <div>TOTAL : {{currency}} {{ticketPrice * selectedSeats.length + convFee}}</div>\r\n        </div>\r\n\r\n        <!-- Action buttons -->\r\n        <div class=\"buttonBar marginTop5\">\r\n            <button (click)=\"clearSelected()\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-default btn-sm\">Clear</button>\r\n            <button (click)=\"createReservation(reservation)\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-success btn-sm\">Reserve Seats</button>\r\n        </div>\r\n    </main>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6190,57 +6124,69 @@ var SeatsComponent = /** @class */ (function () {
         this.time = 'FRI, 6:45PM';
         this.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         this.cols = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        this.reserved = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
-        this.selected = [];
+        this.reservedSeats = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
+        this.selectedSeats = [];
         this.ticketPrice = 12;
         this.convFee = 30;
         this.totalPrice = 0;
         this.currency = '$';
         // return status of each seat
         this.getStatus = function (seatPos) {
-            if (this.reserved.indexOf(seatPos) !== -1) {
+            if (this.reservedSeats.indexOf(seatPos) !== -1) {
                 return 'reserved';
             }
-            else if (this.selected.indexOf(seatPos) !== -1) {
+            else if (this.selectedSeats.indexOf(seatPos) !== -1) {
                 return 'selected';
             }
         };
         // clear handler
         this.clearSelected = function () {
-            this.selected = [];
+            this.selectedSeats = [];
         };
         // click handler
         this.seatClicked = function (seatPos) {
-            var index = this.selected.indexOf(seatPos);
-            this.previous = seatPos;
+            var index = this.selectedSeats.indexOf(seatPos);
+            this.previousSeat = seatPos;
             if (index !== -1) {
                 // seat already selected, remove
-                this.selected.splice(index, 1);
+                this.selectedSeats.splice(index, 1);
             }
             else {
                 // push to selected array only if it is not reserved
-                if (this.reserved.indexOf(seatPos) === -1) {
-                    this.selected.push(seatPos);
+                if (this.reservedSeats.indexOf(seatPos) === -1) {
+                    this.selectedSeats.push(seatPos);
                 }
             }
         };
     }
-    SeatsComponent.prototype.createReservation = function (reservation) {
-        var _this = this;
-        this.reservationService.createReservation(reservation).then(function (newReservation) {
-            _this.createHandler(newReservation);
-        });
-    };
     SeatsComponent.prototype.ngOnInit = function () {
         this.movieForReservation = this.movieService.getMovieData();
         if (!this.movieForReservation) {
             this.router.navigate(['']);
         }
-        console.log(this.movieForReservation);
-        this.movieTitle = this.movieForReservation.Title;
-        this.screen = this.movieForReservation.TheatreAndAuditorium;
-        this.time = this.movieForReservation.dttmShowStart;
-        /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
+        else {
+            console.log(this.movieForReservation);
+            var reservation = {
+                eventId: this.movieForReservation.EventID,
+                movieTitle: this.movieForReservation.Title,
+                movieOriginalTitle: this.movieForReservation.OriginalTitle,
+                picture: this.movieForReservation.Images.EventSmallImagePortrait,
+                theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
+                length: this.movieForReservation.LengthInMinutes,
+                seat: this.selectedSeats,
+                dttmShowStart: this.movieForReservation.dttmShowStart
+            };
+            this.movieTitle = this.movieForReservation.Title;
+            this.screen = this.movieForReservation.TheatreAndAuditorium;
+            this.time = this.movieForReservation.dttmShowStart;
+            /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
+        }
+    };
+    SeatsComponent.prototype.createReservation = function (reservation) {
+        var _this = this;
+        this.reservationService.createReservation(reservation).then(function (newReservation) {
+            _this.createHandler(newReservation);
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -6283,7 +6229,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n    <a class=\"navbar-brand\" routerLink=\"/\">F. A. Cinema</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link navi\" routerLink=\"/\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link navi\" routerLink=\"/reservations\">Reservations</a>\n          </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search for movie\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" routerLink=\"/\">F. A. Cinema</a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link navi\" routerLink=\"/\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a class=\"nav-link navi\" routerLink=\"/reservations\">Reservations</a>\r\n          </li>\r\n      </ul>\r\n      <form class=\"form-inline my-2 my-lg-0\">\r\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search for movie\" aria-label=\"Search\">\r\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\r\n      </form>\r\n    </div>\r\n  </nav>\r\n"
 
 /***/ }),
 
@@ -6346,7 +6292,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Page not found</h2>\n"
+module.exports = "<h2>Page not found</h2>\r\n"
 
 /***/ }),
 
@@ -6536,7 +6482,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Joel\Documents\cinema-angular\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\dimas\Documents\GitHub\cinema-angular\src\main.ts */"./src/main.ts");
 
 
 /***/ })
