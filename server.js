@@ -18,6 +18,10 @@ app.use(express.static(distDir));
   res.sendFile(path.join(__dirname,'dist','cinema-angular','index.html'));
   }); */
 
+  app.get('*', function(req, res) {
+    res.sendfile('./src/index.html')
+  })
+
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
