@@ -6,6 +6,7 @@
 </div>
 <div *ngIf="reservation" class="row">
   <form class="col-md-12">
+      {{reservation.movieTitle}}
     <button class="btn btn-danger" *ngIf="reservation._id" (click)="deleteReservation(reservation._id)">Delete</button>
   </form>
 </div>

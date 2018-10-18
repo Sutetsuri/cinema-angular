@@ -5807,7 +5807,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n  </form>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n      {{reservation.movieTitle}}\r\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
