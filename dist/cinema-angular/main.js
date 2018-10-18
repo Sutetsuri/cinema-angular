@@ -5421,7 +5421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./list/reservations/reservation-list/reservation-list.component */ "./src/app/list/reservations/reservation-list/reservation-list.component.ts");
 /* harmony import */ var _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list/movie-list/movie-list.component */ "./src/app/list/movie-list/movie-list.component.ts");
-/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
+/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./list/reservations/seats/seats.component */ "./src/app/list/reservations/seats/seats.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5433,11 +5434,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: '', component: _list_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__["MovieComponent"] },
     { path: 'reservations', component: _list_reservations_reservation_list_reservation_list_component__WEBPACK_IMPORTED_MODULE_2__["ReservationListComponent"] },
-    { path: 'reserve', component: _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_4__["SeatsComponent"] }
-    // { path: '**', component: PageNotFoundComponent }
+    { path: 'reserve', component: _list_reservations_seats_seats_component__WEBPACK_IMPORTED_MODULE_5__["SeatsComponent"] },
+    { path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_4__["PageNotFoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -6078,7 +6080,7 @@ module.exports = ".font14 {\r\n  font-size: 14px;\r\n}\r\n.font16 {\r\n  font-si
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <main class=\"innerContainer\">\r\n        <div class=\"movie\">\r\n            <h3 class=\"movieTitle\">{{movieTitle}}</h3>\r\n            <div class=\"movieDetails\">{{screen}} - {{time | date: 'medium'}}</div>\r\n            <!-- <img src=\"{{image}}\" height=\"auto\" width=\"auto\"> -->\r\n\r\n        </div>\r\n\r\n        <!-- Showing a static legend bar -->\r\n        <div class=\"legend\">\r\n            <span class=\"oi oi-target freeSeat\"></span> FREE\r\n            <span class=\"oi oi-ban reservedSeat\"></span> TAKEN\r\n            <span class=\"oi oi-check selectedSeat\"></span> SELECTED\r\n        </div>\r\n\r\n        <p class=\"font14 marginTop5\">SCREEN THIS WAY</p>\r\n        <div class=\"screen\"></div>\r\n\r\n        <!-- Generate the seating grid -->\r\n        <div *ngFor=\"let row of rows\">\r\n            <span class=\"seat\" *ngFor=\"let col of cols\" (click)=\"seatClicked(row + col)\"\r\n                    [ngSwitch]=\"getStatus(row + col)\">\r\n                <span *ngSwitchCase=\"'selected'\" class=\"oi oi-check selectedSeat\"></span>\r\n                <span *ngSwitchCase=\"'reserved'\" class=\"oi oi-ban reservedSeat\"></span>\r\n                <span *ngSwitchDefault class=\"oi oi-target freeSeat\"></span>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- Structural directive - only visible on selection -->\r\n        <div *ngIf=\"selectedSeats.length > 0\" class=\"font14 marginTB10\">\r\n            <div class=\"wordWrap\">SEATS RESERVED : {{selectedSeats.length}} <span class=\"count\">({{previousSeat}})</span></div>\r\n            <div>PRICE : {{ticketPrice}} * {{selectedSeats.length}} = {{currency}} {{ticketPrice*selectedSeats.length}} </div>\r\n            <div>TOTAL : {{currency}} {{ticketPrice * selectedSeats.length + convFee}}</div>\r\n        </div>\r\n\r\n        <!-- Action buttons -->\r\n        <div class=\"buttonBar marginTop5\">\r\n            <button (click)=\"clearSelected()\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-default btn-sm\">Clear</button>\r\n            <button (click)=\"createReservation(reservation)\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-success btn-sm\">Reserve Seats</button>\r\n        </div>\r\n    </main>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <main class=\"innerContainer\">\r\n        <div class=\"movie\">\r\n            <h3 class=\"movieTitle\">{{movieTitle}}</h3>\r\n            <div class=\"movieDetails\">{{screen}} - {{time | date: 'medium'}}</div>\r\n            <!-- <img src=\"{{image}}\" height=\"auto\" width=\"auto\"> -->\r\n\r\n        </div>\r\n\r\n        <!-- Showing a static legend bar -->\r\n        <div class=\"legend\">\r\n            <span class=\"oi oi-target freeSeat\"></span> FREE\r\n            <span class=\"oi oi-ban reservedSeat\"></span> TAKEN\r\n            <span class=\"oi oi-check selectedSeat\"></span> SELECTED\r\n        </div>\r\n\r\n        <p class=\"font14 marginTop5\">SCREEN THIS WAY</p>\r\n        <div class=\"screen\"></div>\r\n\r\n        <!-- Generate the seating grid -->\r\n        <div *ngFor=\"let row of rows\">\r\n            <span class=\"seat\" *ngFor=\"let col of cols\" (click)=\"seatClicked(row + col)\"\r\n                    [ngSwitch]=\"getStatus(row + col)\">\r\n                <span *ngSwitchCase=\"'selected'\" class=\"oi oi-check selectedSeat\"></span>\r\n                <span *ngSwitchCase=\"'reserved'\" class=\"oi oi-ban reservedSeat\"></span>\r\n                <span *ngSwitchDefault class=\"oi oi-target freeSeat\"></span>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- Structural directive - only visible on selection -->\r\n        <div *ngIf=\"selectedSeats.length > 0\" class=\"font14 marginTB10\">\r\n            <div class=\"wordWrap\">SEATS RESERVED : {{selectedSeats.length}} <span class=\"count\">({{previousSeat}})</span></div>\r\n            <div>PRICE : {{ticketPrice}} * {{selectedSeats.length}} = {{currency}} {{ticketPrice*selectedSeats.length}} </div>\r\n            <div>TOTAL : {{currency}} {{ticketPrice * selectedSeats.length + convFee}}</div>\r\n        </div>\r\n\r\n        <!-- Action buttons -->\r\n        <div class=\"buttonBar marginTop5\">\r\n            <button (click)=\"clearSelected()\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-default btn-sm\">Clear</button>\r\n            <button (click)=\"createReservation()\" [disabled]=\"selectedSeats.length === 0\" class=\"btn btn-success btn-sm\">Reserve Seats</button>\r\n        </div>\r\n    </main>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6128,7 +6130,10 @@ var SeatsComponent = /** @class */ (function () {
         this.totalPrice = 0;
         this.currency = '$';
         this.addReservation = function (reservation) {
+            console.log(_this.reservations);
+            console.log(reservation);
             _this.reservations.push(reservation);
+            console.log('meme');
             return _this.reservations;
         };
         // return status of each seat
@@ -6190,9 +6195,9 @@ var SeatsComponent = /** @class */ (function () {
             /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
         }
     };
-    SeatsComponent.prototype.createReservation = function (reservation) {
+    SeatsComponent.prototype.createReservation = function () {
         var _this = this;
-        this.reservationService.createReservation(reservation).then(function (newReservation) {
+        this.reservationService.createReservation(this.reservation).then(function (newReservation) {
             _this.addReservation(newReservation);
         });
     };

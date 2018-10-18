@@ -37,7 +37,7 @@
         <!-- Action buttons -->
         <div class="buttonBar marginTop5">
             <button (click)="clearSelected()" [disabled]="selectedSeats.length === 0" class="btn btn-default btn-sm">Clear</button>
-            <button (click)="createReservation(reservation)" [disabled]="selectedSeats.length === 0" class="btn btn-success btn-sm">Reserve Seats</button>
+            <button (click)="createReservation()" [disabled]="selectedSeats.length === 0" class="btn btn-success btn-sm">Reserve Seats</button>
         </div>
     </main>
 </div>
