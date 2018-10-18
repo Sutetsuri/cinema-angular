@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
+const path = require("path");
 
 var RESERVATIONS_COLLECTION = "reservations";
 
