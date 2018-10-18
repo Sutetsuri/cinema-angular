@@ -106,8 +106,8 @@ export class MovieComponent implements OnInit {
     }
   }
 
-  goToReservation(arg) {
-    this.movieForReservation = arg;
+  goToReservation(listedMovie) {
+    this.movieForReservation = listedMovie;
     this.movieService.setMovieData(this.movieForReservation);
     this.router.navigate(['reservations']);
   }
