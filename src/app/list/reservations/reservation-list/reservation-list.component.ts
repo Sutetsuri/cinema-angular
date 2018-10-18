@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
+import { MovieService } from './../../movie-list.service';
 import { ReservationDetailsComponent } from '../reservation-details/reservation-details.component';
 
 
@@ -8,7 +9,6 @@ import { ReservationDetailsComponent } from '../reservation-details/reservation-
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.css'],
-  providers: [ReservationService]
 })
 
 export class ReservationListComponent implements OnInit {
@@ -16,19 +16,24 @@ export class ReservationListComponent implements OnInit {
   reservations: Reservation[];
   selectedReservation: Reservation;
 
-  constructor(private reservationService: ReservationService) { }
+  movieForReservation: any;
+
+  constructor(private reservationService: ReservationService, private movieService: MovieService) {}
 
   ngOnInit() {
-     this.reservationService
-      .getReservations()
-      .then((reservations: Reservation[]) => {
-        this.reservations = reservations.map((reservation) => {
-          // if (!reservation.MovieOriginalTitle) {
-          //   reservation.MovieOriginalTitle = '';
-          // }
-          return reservation;
-        });
+    console.log('onInit reservationList');
+    this.movieForReservation = this.movieService.getMovieData();
+    console.log(this.movieForReservation);
+    this.reservationService
+    .getReservations()
+    .then((reservations: Reservation[]) => {
+      this.reservations = reservations.map((reservation) => {
+        // if (!reservation.MovieOriginalTitle) {
+        //   reservation.MovieOriginalTitle = '';
+        // }
+        return reservation;
       });
+    });
   }
 
   private getIndexOfReservation = (reservationId: String) => {

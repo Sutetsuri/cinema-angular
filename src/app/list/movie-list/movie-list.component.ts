@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Movie } from './../movie';
 import { MovieService } from './../movie-list.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,15 +6,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { formatDate } from '@angular/common';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
-  providers: [MovieService]
 })
-
 export class MovieComponent implements OnInit {
   movies: Movie[];
   selectedTime: string;
@@ -24,13 +23,17 @@ export class MovieComponent implements OnInit {
   places;
   selectedPlace;
 
+  movieForReservation: any;
 
   constructor(private http: HttpClient,
     private ngxXml2jsonService: NgxXml2jsonService,
-    movieService: MovieService, private fb: FormBuilder) { }
+    private movieService: MovieService, private fb: FormBuilder, private router: Router) {}
 
 
   ngOnInit() {
+    console.log('onInit movieList');
+    this.movieService.setMovieData(this.movieForReservation);
+
     let today = new Date();
     this.selectedTime = formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2');
     this.selectedPlace = {ID: '1018', Name: 'Oulu: PLAZA'};
@@ -101,5 +104,11 @@ export class MovieComponent implements OnInit {
       this.selectedPlace = this.timeForm.value.placeControl;
       this.getMovies(this.selectedPlace.ID, this.selectedTime);
     }
+  }
+
+  goToReservation(arg) {
+    this.movieForReservation = arg;
+    this.movieService.setMovieData(this.movieForReservation);
+    this.router.navigate(['reservations']);
   }
 }

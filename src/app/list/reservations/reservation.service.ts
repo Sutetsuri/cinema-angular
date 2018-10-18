@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Reservation } from './reservation';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ReservationService {
     private reservationsUrl = '/api/reservations';
 
