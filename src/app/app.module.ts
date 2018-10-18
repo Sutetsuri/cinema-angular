@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SeatsComponent } from './list/reservations/seats/seats.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -26,7 +27,8 @@ import { AppRoutingModule } from './app-routing.module';
     ReservationDetailsComponent,
     CarouselComponent,
     PageNotFoundComponent,
-    SeatsComponent
+    SeatsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

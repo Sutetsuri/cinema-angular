@@ -19,7 +19,7 @@ export class SeatsComponent implements OnInit {
   selected: string[] = [];
   previous: string;
 
-  ticketPrice: number = 120;
+  ticketPrice: number = 12;
   convFee: number = 30;
   totalPrice: number = 0;
   currency: string = '$';
