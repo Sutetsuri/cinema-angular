@@ -12,13 +12,10 @@ import { Router } from '@angular/router';
 })
 export class SeatsComponent implements OnInit {
 
-  @Input()
+
   reservation: Reservation;
-
-  @Input()
-  createHandler: Function;
-
   reservations: Reservation[];
+
   movieForReservation: any;
 
   // variable declarations
@@ -42,12 +39,20 @@ export class SeatsComponent implements OnInit {
   constructor (private reservationService: ReservationService, private movieService: MovieService, private router: Router) {}
 
   ngOnInit() {
+    this.reservationService
+      .getReservations()
+      .then((reservations: Reservation[]) => {
+        this.reservations = reservations.map((reservation) => {
+          return reservation;
+        });
+      });
+
     this.movieForReservation = this.movieService.getMovieData();
     if (!this.movieForReservation) {
       this.router.navigate(['']);
     } else {
       console.log(this.movieForReservation);
-      var reservation: Reservation = {
+      this.reservation = {
         eventId: this.movieForReservation.EventID,
         movieTitle: this.movieForReservation.Title,
         movieOriginalTitle: this.movieForReservation.OriginalTitle,
@@ -62,18 +67,9 @@ export class SeatsComponent implements OnInit {
       this.time = this.movieForReservation.dttmShowStart;
       /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
     }
-    this.reservationService
-    .getReservations()
-    .then((reservations: Reservation[]) => {
-      this.reservations = reservations.map((reservation) => {
-        return reservation;
-      });
-    });
   }
-
-  createReservation = (reservation: Reservation) => {
+  addReservation = (reservation: Reservation) => {
     this.reservations.push(reservation);
-    return this.reservations;
   }
 
   // return status of each seat
