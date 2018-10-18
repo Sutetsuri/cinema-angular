@@ -6,27 +6,6 @@
 </div>
 <div *ngIf="reservation" class="row">
   <form class="col-md-12">
-    <div class="form-group">
-      <label for="reservation-movie-title">MovieTitle</label>
-      <input class="form-control" name="reservation-movie-title" [(ngModel)]="reservation.movieTitle" placeholder="Mnam"/>
-    </div>
-    <div class="form-group">
-      <label for="reservation-original-title">MovieOriginalTitle</label>
-      <input class="form-control" name="reservation-original-title" [(ngModel)]="reservation.movieOriginalTitle" placeholder="Jeff"/>
-    </div>
-    <div class="form-group">
-      <label for="reservation-theatre">TheatreAndAuditorium</label>
-      <input class="form-control" name="reservation-theatre" [(ngModel)]="reservation.theatreAndAuditorium" placeholder="1"/>
-    </div>
-    <div class="form-group">
-      <label for="reservation-seat">Seat</label>
-      <input class="form-control" name="reservation-seat" [(ngModel)]="reservation.seat" placeholder="45"/>
-    </div>
-    <div class="form-group">
-      <label for="reservation-datetime">dttmShowStart</label>
-      <input class="form-control" name="reservation-datetime" [(ngModel)]="reservation.dttmShowStart" placeholder="whatever format it comes in"/>
-    </div>
-    <button class="btn btn-primary" *ngIf="!reservation._id" (click)="createReservation(reservation)">Create</button>
     <button class="btn btn-danger" *ngIf="reservation._id" (click)="deleteReservation(reservation._id)">Delete</button>
   </form>
 </div>

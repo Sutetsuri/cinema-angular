@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Reservation } from '../reservation';
+import { ReservationService } from '../reservation.service';
+import { MovieService } from './../../movie-list.service';
+
 
 @Component({
   selector: 'app-seats',
@@ -7,8 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeatsComponent implements OnInit {
 
+  @Input()
+  reservation: Reservation;
+
+  @Input()
+  createHandler: Function;
+
+  movieForReservation: any;
+
   // variable declarations
-  movieTitle:string = 'Captain America: The Winter Soldier';
+  movieTitle: string = 'Captain America: The Winter Soldier';
   screen: string = 'LUXE CINEMAS';
   time: string = 'FRI, 6:45PM';
 
@@ -24,8 +36,17 @@ export class SeatsComponent implements OnInit {
   totalPrice: number = 0;
   currency: string = '$';
 
-  ngOnInit() {
+  constructor (private reservationService: ReservationService, private movieService: MovieService) {}
 
+  createReservation(reservation: Reservation) {
+    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
+      this.createHandler(newReservation);
+    });
+  }
+
+  ngOnInit() {
+    this.movieForReservation = this.movieService.getMovieData();
+    console.log(this.movieForReservation);
   }
 
   // return status of each seat
@@ -57,12 +78,12 @@ export class SeatsComponent implements OnInit {
     }
   };
 
-  // Buy button handler
-  showSelected = function () {
-    if (this.selected.length > 0) {
-      alert('Selected Seats: ' + this.selected + '\nTotal: ' + (this.ticketPrice * this.selected.length + this.convFee));
-    } else {
-      alert('No seats selected!');
-    }
-  };
+  // // Buy button handler
+  // showSelected = function () {
+  //   if (this.selected.length > 0) {
+  //     alert('Selected Seats: ' + this.selected + '\nTotal: ' + (this.ticketPrice * this.selected.length + this.convFee));
+  //   } else {
+  //     alert('No seats selected!');
+  //   }
+  // };
 }

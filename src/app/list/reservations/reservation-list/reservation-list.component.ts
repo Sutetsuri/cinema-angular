@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
-import { MovieService } from './../../movie-list.service';
 import { ReservationDetailsComponent } from '../reservation-details/reservation-details.component';
 
 
@@ -18,19 +17,13 @@ export class ReservationListComponent implements OnInit {
 
   movieForReservation: any;
 
-  constructor(private reservationService: ReservationService, private movieService: MovieService) {}
+  constructor(private reservationService: ReservationService) {}
 
   ngOnInit() {
-    console.log('onInit reservationList');
-    this.movieForReservation = this.movieService.getMovieData();
-    console.log(this.movieForReservation);
     this.reservationService
     .getReservations()
     .then((reservations: Reservation[]) => {
       this.reservations = reservations.map((reservation) => {
-        // if (!reservation.MovieOriginalTitle) {
-        //   reservation.MovieOriginalTitle = '';
-        // }
         return reservation;
       });
     });
@@ -46,20 +39,20 @@ export class ReservationListComponent implements OnInit {
     this.selectedReservation = reservation;
   }
 
-  createNewReservation() {
-    var reservation: Reservation = {
-      eventId: '',
-      movieTitle: '',
-      movieOriginalTitle: '',
-      picture: '',
-      theatreAndAuditorium: '',
-      seat: '',
-      dttmShowStart: ''
-    };
+  // createNewReservation() {
+  //   var reservation: Reservation = {
+  //     eventId: '',
+  //     movieTitle: '',
+  //     movieOriginalTitle: '',
+  //     picture: '',
+  //     theatreAndAuditorium: '',
+  //     seat: '',
+  //     dttmShowStart: ''
+  //   };
 
-    // By default, a newly-created reservation will have the selected state.
-    this.selectReservation(reservation);
-  }
+  //   // By default, a newly-created reservation will have the selected state.
+  //   this.selectReservation(reservation);
+  // }
 
   deleteReservation = (reservationId: String) => {
     var idx = this.getIndexOfReservation(reservationId);
@@ -67,12 +60,6 @@ export class ReservationListComponent implements OnInit {
       this.reservations.splice(idx, 1);
       this.selectReservation(null);
     }
-    return this.reservations;
-  }
-
-  addReservation = (reservation: Reservation) => {
-    this.reservations.push(reservation);
-    this.selectReservation(reservation);
     return this.reservations;
   }
 }

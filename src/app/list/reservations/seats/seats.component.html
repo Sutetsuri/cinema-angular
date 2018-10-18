@@ -35,7 +35,7 @@
         <!-- Action buttons -->
         <div class="buttonBar marginTop5">
             <button (click)="clearSelected()" [disabled]="selected.length === 0" class="btn btn-default btn-sm">Clear</button>
-            <button (click)="showSelected()" [disabled]="selected.length === 0" class="btn btn-success btn-sm">Buy Tickets</button>
+            <button (click)="createReservation(reservation)" [disabled]="selected.length === 0" class="btn btn-success btn-sm">Buy Tickets</button>
         </div>
     </main>
 </div>

@@ -9,7 +9,7 @@ import { SeatsComponent } from './list/reservations/seats/seats.component';
 const routes: Routes = [
   { path: '', component: MovieComponent },
   { path: 'reservations', component: ReservationListComponent },
-  { path: 'seats', component: SeatsComponent },
+  { path: 'reserve', component: SeatsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
