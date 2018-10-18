@@ -2,7 +2,9 @@
     <main class="innerContainer">
         <div class="movie">
             <h3 class="movieTitle">{{movieTitle}}</h3>
-            <div class="movieDetails">{{screen}} - {{time}}</div>
+            <div class="movieDetails">{{screen}} - {{time | date: 'medium'}}</div>
+            <!-- <img src="{{image}}" height="auto" width="auto"> -->
+
         </div>
 
         <!-- Showing a static legend bar -->

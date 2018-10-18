@@ -24,6 +24,7 @@ export class SeatsComponent implements OnInit {
   movieTitle: string = 'Captain America: The Winter Soldier';
   screen: string = 'LUXE CINEMAS';
   time: string = 'FRI, 6:45PM';
+  image;
 
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   cols: number[]  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -55,6 +56,7 @@ export class SeatsComponent implements OnInit {
     this.movieTitle = this.movieForReservation.Title;
     this.screen = this.movieForReservation.TheatreAndAuditorium;
     this.time = this.movieForReservation.dttmShowStart;
+    /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
   }
 
   // return status of each seat
