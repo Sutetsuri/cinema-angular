@@ -18,6 +18,7 @@ export class SeatsComponent implements OnInit {
   @Input()
   createHandler: Function;
 
+  reservations: Reservation[];
   movieForReservation: any;
 
   // variable declarations
@@ -61,12 +62,18 @@ export class SeatsComponent implements OnInit {
       this.time = this.movieForReservation.dttmShowStart;
       /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
     }
+    this.reservationService
+    .getReservations()
+    .then((reservations: Reservation[]) => {
+      this.reservations = reservations.map((reservation) => {
+        return reservation;
+      });
+    });
   }
 
-  createReservation(reservation: Reservation) {
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
-      this.createHandler(newReservation);
-    });
+  createReservation = (reservation: Reservation) => {
+    this.reservations.push(reservation);
+    return this.reservations;
   }
 
   // return status of each seat
