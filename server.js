@@ -10,10 +10,10 @@ var app = express();
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
-var distDir =path.join( __dirname , "dist");
+var distDir =path.join( __dirname , 'dist','cinema-angular');
 app.use(express.static(distDir));
 
-app.get('/*', function(req,res) {
+app.use('/*', function(req,res) {
 
   res.sendFile(path.join(__dirname,'dist','cinema-angular','index.html'));
   });
