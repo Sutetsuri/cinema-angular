@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
 import { MovieService } from './../../movie-list.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class SeatsComponent implements OnInit {
   totalPrice: number = 0;
   currency: string = '$';
 
-  constructor (private reservationService: ReservationService, private movieService: MovieService) {}
+  constructor (private reservationService: ReservationService, private movieService: MovieService, private router: Router) {}
 
   createReservation(reservation: Reservation) {
     this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
@@ -46,7 +47,13 @@ export class SeatsComponent implements OnInit {
 
   ngOnInit() {
     this.movieForReservation = this.movieService.getMovieData();
+    if (!this.movieForReservation) {
+      this.router.navigate(['']);
+    }
     console.log(this.movieForReservation);
+    this.movieTitle = this.movieForReservation.Title;
+    this.screen = this.movieForReservation.TheatreAndAuditorium;
+    this.time = this.movieForReservation.dttmShowStart;
   }
 
   // return status of each seat

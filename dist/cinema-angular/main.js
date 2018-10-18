@@ -6164,6 +6164,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reservation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reservation */ "./src/app/list/reservations/reservation.ts");
 /* harmony import */ var _reservation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reservation.service */ "./src/app/list/reservations/reservation.service.ts");
 /* harmony import */ var _movie_list_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../movie-list.service */ "./src/app/list/movie-list.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6177,10 +6178,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SeatsComponent = /** @class */ (function () {
-    function SeatsComponent(reservationService, movieService) {
+    function SeatsComponent(reservationService, movieService, router) {
         this.reservationService = reservationService;
         this.movieService = movieService;
+        this.router = router;
         // variable declarations
         this.movieTitle = 'Captain America: The Winter Soldier';
         this.screen = 'LUXE CINEMAS';
@@ -6230,7 +6233,13 @@ var SeatsComponent = /** @class */ (function () {
     };
     SeatsComponent.prototype.ngOnInit = function () {
         this.movieForReservation = this.movieService.getMovieData();
+        if (!this.movieForReservation) {
+            this.router.navigate(['']);
+        }
         console.log(this.movieForReservation);
+        this.movieTitle = this.movieForReservation.Title;
+        this.screen = this.movieForReservation.TheatreAndAuditorium;
+        this.time = this.movieForReservation.dttmShowStart;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -6246,7 +6255,7 @@ var SeatsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./seats.component.html */ "./src/app/list/reservations/seats/seats.component.html"),
             styles: [__webpack_require__(/*! ./seats.component.css */ "./src/app/list/reservations/seats/seats.component.css")]
         }),
-        __metadata("design:paramtypes", [_reservation_service__WEBPACK_IMPORTED_MODULE_2__["ReservationService"], _movie_list_service__WEBPACK_IMPORTED_MODULE_3__["MovieService"]])
+        __metadata("design:paramtypes", [_reservation_service__WEBPACK_IMPORTED_MODULE_2__["ReservationService"], _movie_list_service__WEBPACK_IMPORTED_MODULE_3__["MovieService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], SeatsComponent);
     return SeatsComponent;
 }());
