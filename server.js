@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
-const path = require("path");
+/* const path = require("path"); */
 
 var RESERVATIONS_COLLECTION = "reservations";
 
@@ -10,13 +10,13 @@ var app = express();
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
-var distDir = path.join(__dirname, 'dist','cinema-angular');
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
-app.get('/*', function(req,res) {
+/* app.get('/*', function(req,res) {
 
   res.sendFile(path.join(__dirname,'dist','cinema-angular','index.html'));
-  });
+  }); */
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;

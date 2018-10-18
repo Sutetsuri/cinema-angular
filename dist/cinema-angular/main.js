@@ -5807,7 +5807,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"reservation\" class=\"row\">\n  <div class=\"col-md-12\">\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\n  </div>\n</div>\n<div *ngIf=\"reservation\" class=\"row\">\n  <form class=\"col-md-12\">\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\n  </form>\n</div>\n"
+module.exports = "<div *ngIf=\"reservation\" class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h2 *ngIf=\"reservation._id\">Reservation Details</h2>\r\n    <h2 *ngIf=\"!reservation._id\">New Reservation</h2>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"reservation\" class=\"row\">\r\n  <form class=\"col-md-12\">\r\n    <button class=\"btn btn-danger\" *ngIf=\"reservation._id\" (click)=\"deleteReservation(reservation._id)\">Delete</button>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -5887,7 +5887,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-5\">\n    <h2>Reservations</h2>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\"\n        *ngFor=\"let reservation of reservations\"\n        (click)=\"selectReservation(reservation)\"\n        [class.active]=\"reservation === selectedReservation\">\n        {{reservation.movieTitle}}\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-md-5 col-md-offset-2\">\n    <app-reservation-details\n      [reservation]=\"selectedReservation\"\n      [deleteHandler]=\"deleteReservation\">\n    </app-reservation-details>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-5\">\r\n    <h2>Reservations</h2>\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\"\r\n        *ngFor=\"let reservation of reservations\"\r\n        (click)=\"selectReservation(reservation)\"\r\n        [class.active]=\"reservation === selectedReservation\">\r\n        {{reservation.movieTitle}}\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"col-md-5 col-md-offset-2\">\r\n    <app-reservation-details\r\n      [reservation]=\"selectedReservation\"\r\n      [deleteHandler]=\"deleteReservation\">\r\n    </app-reservation-details>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6234,7 +6234,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" routerLink=\"/\">F. A. Cinema</a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link navi\" routerLink=\"/\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a class=\"nav-link navi\" routerLink=\"/reservations\">Reservations</a>\r\n          </li>\r\n      </ul>\r\n      <form class=\"form-inline my-2 my-lg-0\">\r\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search for movie\" aria-label=\"Search\">\r\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\r\n      </form>\r\n    </div>\r\n  </nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n    <a class=\"navbar-brand\" routerLink=\"/\">F. A. Cinema</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link navi\" routerLink=\"/\">Home</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link navi\" routerLink=\"/reservations\">Reservations</a>\n          </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search for movie\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n"
 
 /***/ }),
 
@@ -6297,7 +6297,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Page not found</h2>\r\n"
+module.exports = "<h2>Page not found</h2>\n"
 
 /***/ }),
 
@@ -6487,7 +6487,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\dimas\Documents\GitHub\cinema-angular\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Joel\Documents\cinema-angular\src\main.ts */"./src/main.ts");
 
 
 /***/ })
