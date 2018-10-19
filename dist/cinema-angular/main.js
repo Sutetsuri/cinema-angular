@@ -6209,10 +6209,10 @@ var SeatsComponent = /** @class */ (function () {
         var _this = this;
         console.log(reservation);
         this.reservationService.createReservation(reservation).then(function (newReservation) {
+            if (newReservation === void 0) { newReservation = _this.reservation; }
             _this.addReservation(newReservation);
             console.log(newReservation);
         });
-        console.log(reservation);
     };
     SeatsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
