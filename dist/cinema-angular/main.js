@@ -6233,6 +6233,7 @@ var SeatsComponent = /** @class */ (function () {
     SeatsComponent.prototype.goToReservation = function () {
         var _this = this;
         console.log('Inside goToReservation');
+        console.log("movieForSeats: " + this.movieForSeats);
         this.reservation = {
             eventId: this.movieForSeats.EventID,
             movieTitle: this.movieForSeats.Title,
@@ -6243,9 +6244,9 @@ var SeatsComponent = /** @class */ (function () {
             seat: this.selectedSeats,
             dttmShowStart: this.movieForSeats.dttmShowStart
         };
-        console.log(this.reservation);
+        console.log("Reservation: " + this.reservation);
         this.reservationService.createReservation(this.reservation).then(function (res) {
-            console.log(res);
+            console.log("Response from POST: " + res);
             if (res) {
                 _this.movieForReservation = _this.reservation;
                 _this.movieService.setMovieData(_this.movieForReservation);

@@ -109,6 +109,7 @@ export class SeatsComponent implements OnInit {
 
   goToReservation() {
     console.log('Inside goToReservation');
+    console.log(`movieForSeats: ${this.movieForSeats}`);
     this.reservation = {
       eventId: this.movieForSeats.EventID,
       movieTitle: this.movieForSeats.Title,
@@ -119,9 +120,9 @@ export class SeatsComponent implements OnInit {
       seat: this.selectedSeats,
       dttmShowStart: this.movieForSeats.dttmShowStart
     };
-    console.log(this.reservation);
+    console.log(`Reservation: ${this.reservation}`);
     this.reservationService.createReservation(this.reservation).then(res => {
-      console.log(res);
+      console.log(`Response from POST: ${res}`);
       if (res) {
         this.movieForReservation = this.reservation;
         this.movieService.setMovieData(this.movieForReservation);
