@@ -119,6 +119,7 @@ export class SeatsComponent implements OnInit {
       seat: this.selectedSeats,
       dttmShowStart: this.movieForSeats.dttmShowStart
     };
+    console.log(this.reservation);
     this.reservationService.createReservation(this.reservation).then(res => {
       console.log(res);
       if (res) {
