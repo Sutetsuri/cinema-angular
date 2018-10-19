@@ -17,7 +17,6 @@ export class SeatsComponent implements OnInit {
   reservations: Reservation[];
 
   movieForSeats: any;
-  movieForReservation: any;
 
   // variable declarations
   movieTitle: string = 'Captain America: The Winter Soldier';
@@ -40,14 +39,6 @@ export class SeatsComponent implements OnInit {
   constructor (private reservationService: ReservationService, private movieService: MovieService, private router: Router) {}
 
   ngOnInit() {
-    // this.reservationService
-    //   .getReservations()
-    //   .then((reservations: Reservation[]) => {
-    //     this.reservations = reservations.map((reservation) => {
-    //       return reservation;
-    //     });
-    //   });
-
     this.movieForSeats = this.movieService.getMovieData();
     if (!this.movieForSeats) {
       this.router.navigate(['']);
@@ -60,23 +51,6 @@ export class SeatsComponent implements OnInit {
       /* this.image = this.movieForSeat.Images.EventLargeImageLandscape; */
     }
   }
-
-  // makeReservation(reservation: Reservation) {
-  //   console.log(reservation);
-  //   this.reservationService.createReservation(reservation).then((newReservation: Reservation ) => {
-  //     this.addReservation(newReservation);
-  //     console.log(newReservation);
-  //   });
-  // }
-
-  // addReservation = (reservation: Reservation) => {
-  //   console.log(this.reservations);
-  //   console.log(reservation);
-  //   this.reservations.push(reservation);
-  //   console.log('meme');
-  //   console.log(this.reservations);
-  //   return this.reservations;
-  // }
 
   // return status of each seat
   getStatus = function (seatPos: string) {
@@ -125,8 +99,6 @@ export class SeatsComponent implements OnInit {
     this.reservationService.createReservation(this.reservation).then(res => {
       console.log(`Response from POST: ${res}`);
       if (res) {
-        this.movieForReservation = this.reservation;
-        this.movieService.setMovieData(this.movieForReservation);
         this.router.navigate(['reservations']);
       }
     });

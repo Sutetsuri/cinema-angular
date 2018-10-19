@@ -12,19 +12,9 @@ export class ReservationDetailsComponent {
   @Input()
   reservation: Reservation;
   @Input()
-  createHandler: Function;
-  @Input()
   deleteHandler: Function;
 
   constructor (private reservationService: ReservationService) {}
-
-  createReservation(reservation: Reservation) {
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
-      this.createHandler(newReservation);
-      console.log(newReservation);
-    });
-    console.log(reservation);
-  }
 
   deleteReservation(reservationId: String): void {
     this.reservationService.deleteReservation(reservationId).then((deletedReservationId: String) => {

@@ -5840,14 +5840,6 @@ var ReservationDetailsComponent = /** @class */ (function () {
     function ReservationDetailsComponent(reservationService) {
         this.reservationService = reservationService;
     }
-    ReservationDetailsComponent.prototype.createReservation = function (reservation) {
-        var _this = this;
-        this.reservationService.createReservation(reservation).then(function (newReservation) {
-            _this.createHandler(newReservation);
-            console.log(newReservation);
-        });
-        console.log(reservation);
-    };
     ReservationDetailsComponent.prototype.deleteReservation = function (reservationId) {
         var _this = this;
         this.reservationService.deleteReservation(reservationId).then(function (deletedReservationId) {
@@ -5858,10 +5850,6 @@ var ReservationDetailsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _reservation__WEBPACK_IMPORTED_MODULE_1__["Reservation"])
     ], ReservationDetailsComponent.prototype, "reservation", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Function)
-    ], ReservationDetailsComponent.prototype, "createHandler", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Function)
@@ -5899,7 +5887,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-5\">\n    <h2>Reservations</h2>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\"\n        *ngFor=\"let reservation of reservations\"\n        (click)=\"selectReservation(reservation)\"\n        [class.active]=\"reservation === selectedReservation\">\n        {{reservation.movieTitle}}\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-md-5 col-md-offset-2\">\n    <app-reservation-details\n      [reservation]=\"selectedReservation\"\n      [createHandler]=\"addReservation\"\n      [deleteHandler]=\"deleteReservation\">\n    </app-reservation-details>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-5\">\n    <h2>Reservations</h2>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\"\n        *ngFor=\"let reservation of reservations\"\n        (click)=\"selectReservation(reservation)\"\n        [class.active]=\"reservation === selectedReservation\">\n        {{reservation.movieTitle}}\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-md-5 col-md-offset-2\">\n    <app-reservation-details\n      [reservation]=\"selectedReservation\"\n      [deleteHandler]=\"deleteReservation\">\n    </app-reservation-details>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -5975,22 +5963,6 @@ var ReservationListComponent = /** @class */ (function () {
                 return reservation;
             });
         });
-        this.movieForReservation = this.movieService.getMovieData();
-        if (this.movieForReservation) {
-            console.log(this.movieForReservation);
-            // reservation to pass
-            // this.reservation = {
-            //   eventId: this.movieForReservation.EventID,
-            //   movieTitle: this.movieForReservation.Title,
-            //   movieOriginalTitle: this.movieForReservation.OriginalTitle,
-            //   picture: this.movieForReservation.Images.EventSmallImagePortrait,
-            //   theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
-            //   length: this.movieForReservation.LengthInMinutes,
-            //   seat: this.movieForReservation.seats,
-            //   dttmShowStart: this.movieForReservation.dttmShowStart
-            // };
-            // console.log(this.reservation);
-        }
     };
     ReservationListComponent.prototype.selectReservation = function (reservation) {
         this.selectedReservation = reservation;
@@ -6165,21 +6137,6 @@ var SeatsComponent = /** @class */ (function () {
         this.convFee = 2;
         this.totalPrice = 0;
         this.currency = '$';
-        // makeReservation(reservation: Reservation) {
-        //   console.log(reservation);
-        //   this.reservationService.createReservation(reservation).then((newReservation: Reservation ) => {
-        //     this.addReservation(newReservation);
-        //     console.log(newReservation);
-        //   });
-        // }
-        // addReservation = (reservation: Reservation) => {
-        //   console.log(this.reservations);
-        //   console.log(reservation);
-        //   this.reservations.push(reservation);
-        //   console.log('meme');
-        //   console.log(this.reservations);
-        //   return this.reservations;
-        // }
         // return status of each seat
         this.getStatus = function (seatPos) {
             if (this.reservedSeats.indexOf(seatPos) !== -1) {
@@ -6210,13 +6167,6 @@ var SeatsComponent = /** @class */ (function () {
         };
     }
     SeatsComponent.prototype.ngOnInit = function () {
-        // this.reservationService
-        //   .getReservations()
-        //   .then((reservations: Reservation[]) => {
-        //     this.reservations = reservations.map((reservation) => {
-        //       return reservation;
-        //     });
-        //   });
         this.movieForSeats = this.movieService.getMovieData();
         if (!this.movieForSeats) {
             this.router.navigate(['']);
@@ -6249,8 +6199,6 @@ var SeatsComponent = /** @class */ (function () {
         this.reservationService.createReservation(this.reservation).then(function (res) {
             console.log("Response from POST: " + res);
             if (res) {
-                _this.movieForReservation = _this.reservation;
-                _this.movieService.setMovieData(_this.movieForReservation);
                 _this.router.navigate(['reservations']);
             }
         });
