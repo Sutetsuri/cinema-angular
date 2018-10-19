@@ -69,11 +69,11 @@ export class SeatsComponent implements OnInit {
   }
 
   makeReservation(reservation: Reservation) {
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
+    this.reservationService.createReservation(reservation).then((newReservation: Reservation = reservation) => {
       this.addReservation(newReservation);
       console.log(newReservation);
     });
-    console.log(this.reservation);
+    console.log(reservation);
   }
 
   addReservation = (reservation: Reservation) => {

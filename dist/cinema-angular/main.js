@@ -6198,10 +6198,11 @@ var SeatsComponent = /** @class */ (function () {
     SeatsComponent.prototype.makeReservation = function (reservation) {
         var _this = this;
         this.reservationService.createReservation(reservation).then(function (newReservation) {
+            if (newReservation === void 0) { newReservation = reservation; }
             _this.addReservation(newReservation);
             console.log(newReservation);
         });
-        console.log(this.reservation);
+        console.log(reservation);
     };
     SeatsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
