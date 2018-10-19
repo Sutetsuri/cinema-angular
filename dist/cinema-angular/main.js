@@ -5979,16 +5979,16 @@ var ReservationListComponent = /** @class */ (function () {
         if (this.movieForReservation) {
             console.log(this.movieForReservation);
             // reservation to pass
-            this.reservation = {
-                eventId: this.movieForReservation.EventID,
-                movieTitle: this.movieForReservation.Title,
-                movieOriginalTitle: this.movieForReservation.OriginalTitle,
-                picture: this.movieForReservation.Images.EventSmallImagePortrait,
-                theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
-                length: this.movieForReservation.LengthInMinutes,
-                seat: this.movieForReservation.seats,
-                dttmShowStart: this.movieForReservation.dttmShowStart
-            };
+            // this.reservation = {
+            //   eventId: this.movieForReservation.EventID,
+            //   movieTitle: this.movieForReservation.Title,
+            //   movieOriginalTitle: this.movieForReservation.OriginalTitle,
+            //   picture: this.movieForReservation.Images.EventSmallImagePortrait,
+            //   theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
+            //   length: this.movieForReservation.LengthInMinutes,
+            //   seat: this.movieForReservation.seats,
+            //   dttmShowStart: this.movieForReservation.dttmShowStart
+            // };
             console.log(this.reservation);
         }
     };
