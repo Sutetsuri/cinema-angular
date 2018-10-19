@@ -6234,6 +6234,7 @@ var SeatsComponent = /** @class */ (function () {
         var _this = this;
         console.log('Inside goToReservation');
         console.log("movieForSeats: " + this.movieForSeats);
+        console.log("Title: " + this.movieForSeats.Title);
         this.reservation = {
             eventId: this.movieForSeats.EventID,
             movieTitle: this.movieForSeats.Title,
