@@ -6207,6 +6207,7 @@ var SeatsComponent = /** @class */ (function () {
     };
     SeatsComponent.prototype.makeReservation = function (reservation) {
         var _this = this;
+        console.log(reservation);
         this.reservationService.createReservation(reservation).then(function (newReservation) {
             _this.addReservation(newReservation);
             console.log(newReservation);
