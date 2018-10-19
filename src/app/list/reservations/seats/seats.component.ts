@@ -42,7 +42,9 @@ export class SeatsComponent implements OnInit {
     this.reservationService
       .getReservations()
       .then((reservations: Reservation[]) => {
-        this.reservations = reservations;
+        this.reservations = reservations.map((reservation) => {
+          return reservation;
+        });
       });
 
     this.movieForReservation = this.movieService.getMovieData();
@@ -69,7 +71,7 @@ export class SeatsComponent implements OnInit {
   }
 
   makeReservation(reservation: Reservation) {
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation = reservation) => {
+    this.reservationService.createReservation(reservation).then((newReservation: Reservation ) => {
       this.addReservation(newReservation);
       console.log(newReservation);
     });
@@ -81,6 +83,7 @@ export class SeatsComponent implements OnInit {
     console.log(reservation);
     this.reservations.push(reservation);
     console.log('meme');
+    console.log(this.reservations);
     return this.reservations;
   }
 

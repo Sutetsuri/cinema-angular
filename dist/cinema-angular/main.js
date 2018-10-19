@@ -5840,6 +5840,13 @@ var ReservationDetailsComponent = /** @class */ (function () {
     function ReservationDetailsComponent(reservationService) {
         this.reservationService = reservationService;
     }
+    // createReservation(reservation: Reservation) {
+    //   this.reservationService.createReservation(reservation).then((newReservation: Reservation) => {
+    //     this.createHandler(newReservation);
+    //     console.log(newReservation);
+    //   });
+    //   console.log(reservation);
+    // }
     ReservationDetailsComponent.prototype.deleteReservation = function (reservationId) {
         var _this = this;
         this.reservationService.deleteReservation(reservationId).then(function (deletedReservationId) {
@@ -6134,6 +6141,7 @@ var SeatsComponent = /** @class */ (function () {
             console.log(reservation);
             _this.reservations.push(reservation);
             console.log('meme');
+            console.log(_this.reservations);
             return _this.reservations;
         };
         // return status of each seat
@@ -6170,7 +6178,9 @@ var SeatsComponent = /** @class */ (function () {
         this.reservationService
             .getReservations()
             .then(function (reservations) {
-            _this.reservations = reservations;
+            _this.reservations = reservations.map(function (reservation) {
+                return reservation;
+            });
         });
         this.movieForReservation = this.movieService.getMovieData();
         if (!this.movieForReservation) {
@@ -6198,7 +6208,6 @@ var SeatsComponent = /** @class */ (function () {
     SeatsComponent.prototype.makeReservation = function (reservation) {
         var _this = this;
         this.reservationService.createReservation(reservation).then(function (newReservation) {
-            if (newReservation === void 0) { newReservation = reservation; }
             _this.addReservation(newReservation);
             console.log(newReservation);
         });

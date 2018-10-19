@@ -60,4 +60,11 @@ export class ReservationListComponent implements OnInit {
     }
     return this.reservations;
   }
+
+  // addReservation = (reservation: Reservation) => {
+  //   console.log(reservation);
+  //   this.reservations.push(reservation);
+  //   this.selectReservation(reservation);
+  //   return this.reservations;
+  // }
 }
