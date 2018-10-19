@@ -16,6 +16,7 @@ export class SeatsComponent implements OnInit {
   reservation: Reservation;
   reservations: Reservation[];
 
+  movieForSeats: any;
   movieForReservation: any;
 
   // variable declarations
@@ -39,53 +40,43 @@ export class SeatsComponent implements OnInit {
   constructor (private reservationService: ReservationService, private movieService: MovieService, private router: Router) {}
 
   ngOnInit() {
-    this.reservationService
-      .getReservations()
-      .then((reservations: Reservation[]) => {
-        this.reservations = reservations.map((reservation) => {
-          return reservation;
-        });
-      });
+    // this.reservationService
+    //   .getReservations()
+    //   .then((reservations: Reservation[]) => {
+    //     this.reservations = reservations.map((reservation) => {
+    //       return reservation;
+    //     });
+    //   });
 
-    this.movieForReservation = this.movieService.getMovieData();
-    if (!this.movieForReservation) {
+    this.movieForSeats = this.movieService.getMovieData();
+    if (!this.movieForSeats) {
       this.router.navigate(['']);
     } else {
-      console.log(this.movieForReservation);
+      console.log(this.movieForSeats);
       // reservation to pass
-      this.reservation = {
-        eventId: this.movieForReservation.EventID,
-        movieTitle: this.movieForReservation.Title,
-        movieOriginalTitle: this.movieForReservation.OriginalTitle,
-        picture: this.movieForReservation.Images.EventSmallImagePortrait,
-        theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
-        length: this.movieForReservation.LengthInMinutes,
-        seat: this.selectedSeats,
-        dttmShowStart: this.movieForReservation.dttmShowStart
-      };
-      this.movieTitle = this.movieForReservation.Title;
-      this.screen = this.movieForReservation.TheatreAndAuditorium;
-      this.time = this.movieForReservation.dttmShowStart;
-      /* this.image = this.movieForReservation.Images.EventLargeImageLandscape; */
+      this.movieTitle = this.movieForSeats.Title;
+      this.screen = this.movieForSeats.TheatreAndAuditorium;
+      this.time = this.movieForSeats.dttmShowStart;
+      /* this.image = this.movieForSeat.Images.EventLargeImageLandscape; */
     }
   }
 
-  makeReservation(reservation: Reservation) {
-    console.log(reservation);
-    this.reservationService.createReservation(reservation).then((newReservation: Reservation = this.reservation ) => {
-      this.addReservation(newReservation);
-      console.log(newReservation);
-    });
-  }
+  // makeReservation(reservation: Reservation) {
+  //   console.log(reservation);
+  //   this.reservationService.createReservation(reservation).then((newReservation: Reservation ) => {
+  //     this.addReservation(newReservation);
+  //     console.log(newReservation);
+  //   });
+  // }
 
-  addReservation = (reservation: Reservation) => {
-    console.log(this.reservations);
-    console.log(reservation);
-    this.reservations.push(reservation);
-    console.log('meme');
-    console.log(this.reservations);
-    return this.reservations;
-  }
+  // addReservation = (reservation: Reservation) => {
+  //   console.log(this.reservations);
+  //   console.log(reservation);
+  //   this.reservations.push(reservation);
+  //   console.log('meme');
+  //   console.log(this.reservations);
+  //   return this.reservations;
+  // }
 
   // return status of each seat
   getStatus = function (seatPos: string) {
@@ -115,6 +106,22 @@ export class SeatsComponent implements OnInit {
       }
     }
   };
+
+  goToReservation() {
+    this.reservation = {
+      eventId: this.movieForSeats.EventID,
+      movieTitle: this.movieForSeats.Title,
+      movieOriginalTitle: this.movieForSeats.OriginalTitle,
+      picture: this.movieForSeats.Images.EventSmallImagePortrait,
+      theatreAndAuditorium: this.movieForSeats.TheatreAndAuditorium,
+      length: this.movieForSeats.LengthInMinutes,
+      seat: this.selectedSeats,
+      dttmShowStart: this.movieForSeats.dttmShowStart
+    };
+    this.movieForReservation = this.reservation;
+    this.movieService.setMovieData(this.movieForReservation);
+    this.router.navigate(['reservations']);
+  }
 
   // // Buy button handler
   // showSelected = function () {

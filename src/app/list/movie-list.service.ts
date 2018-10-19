@@ -6,14 +6,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MovieService {
-  movieForReservationData: any;
+  movieForComponentData: any;
 
   setMovieData(data: any) {
-    this.movieForReservationData = data;
+    this.movieForComponentData = data;
     console.log(data);
   }
   getMovieData() {
-    return this.movieForReservationData;
+    return this.movieForComponentData;
   }
 
 }

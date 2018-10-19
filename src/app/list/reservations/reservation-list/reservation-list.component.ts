@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
+import { MovieService } from './../../movie-list.service';
 import { ReservationDetailsComponent } from '../reservation-details/reservation-details.component';
 
 
@@ -12,19 +13,39 @@ import { ReservationDetailsComponent } from '../reservation-details/reservation-
 
 export class ReservationListComponent implements OnInit {
 
+  reservation: Reservation;
   reservations: Reservation[];
   selectedReservation: Reservation;
 
-  constructor(private reservationService: ReservationService) {}
+  movieForReservation: any;
+
+  constructor(private reservationService: ReservationService, private movieService: MovieService) {}
 
   ngOnInit() {
     this.reservationService
-    .getReservations()
-    .then((reservations: Reservation[]) => {
-      this.reservations = reservations.map((reservation) => {
-        return reservation;
+      .getReservations()
+      .then((reservations: Reservation[]) => {
+        this.reservations = reservations.map((reservation) => {
+          return reservation;
+        });
       });
-    });
+
+    this.movieForReservation = this.movieService.getMovieData();
+    if (this.movieForReservation) {
+      console.log(this.movieForReservation);
+      // reservation to pass
+      this.reservation = {
+        eventId: this.movieForReservation.EventID,
+        movieTitle: this.movieForReservation.Title,
+        movieOriginalTitle: this.movieForReservation.OriginalTitle,
+        picture: this.movieForReservation.Images.EventSmallImagePortrait,
+        theatreAndAuditorium: this.movieForReservation.TheatreAndAuditorium,
+        length: this.movieForReservation.LengthInMinutes,
+        seat: this.movieForReservation.seats,
+        dttmShowStart: this.movieForReservation.dttmShowStart
+      };
+      console.log(this.reservation);
+    }
   }
 
   private getIndexOfReservation = (reservationId: String) => {
@@ -61,10 +82,10 @@ export class ReservationListComponent implements OnInit {
     return this.reservations;
   }
 
-  // addReservation = (reservation: Reservation) => {
-  //   console.log(reservation);
-  //   this.reservations.push(reservation);
-  //   this.selectReservation(reservation);
-  //   return this.reservations;
-  // }
+  addReservation = (reservation: Reservation) => {
+    console.log(reservation);
+    this.reservations.push(reservation);
+    this.selectReservation(reservation);
+    return this.reservations;
+  }
 }

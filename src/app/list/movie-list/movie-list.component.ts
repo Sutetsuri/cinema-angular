@@ -23,7 +23,7 @@ export class MovieComponent implements OnInit {
   places;
   selectedPlace;
 
-  movieForReservation: any;
+  movieForSeats: any;
 
   constructor(private http: HttpClient,
     private ngxXml2jsonService: NgxXml2jsonService,
@@ -32,7 +32,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     console.log('onInit movieList');
-    this.movieService.setMovieData(this.movieForReservation);
+    this.movieService.setMovieData(this.movieForSeats);
 
     let today = new Date();
     this.selectedTime = formatDate(today, 'yyyy-MM-dd', 'en-FI', '+2');
@@ -65,15 +65,15 @@ export class MovieComponent implements OnInit {
     this.xml = 'https://www.finnkino.fi/xml/TheatreAreas/';
     const parser = new DOMParser();
     this.http.get(this.xml, {
-        responseType: 'text'
-      }).subscribe(data => {
+      responseType: 'text'
+    }).subscribe(data => {
 
-        const xml = parser.parseFromString(data, 'text/xml');
-        const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        this.places = obj['TheatreAreas']['TheatreArea'];
-        console.log(this.places);
-        },
-        error => console.log('oops', error))
+      const xml = parser.parseFromString(data, 'text/xml');
+      const obj = this.ngxXml2jsonService.xmlToJson(xml);
+      this.places = obj['TheatreAreas']['TheatreArea'];
+      console.log(this.places);
+    },
+      error => console.log('oops', error));
   }
 
   getMovies(city, date) {
@@ -106,9 +106,9 @@ export class MovieComponent implements OnInit {
     }
   }
 
-  goToReservation(listedMovie) {
-    this.movieForReservation = listedMovie;
-    this.movieService.setMovieData(this.movieForReservation);
+  goToSeats(listedMovie) {
+    this.movieForSeats = listedMovie;
+    this.movieService.setMovieData(this.movieForSeats);
     this.router.navigate(['reserve']);
   }
 }
