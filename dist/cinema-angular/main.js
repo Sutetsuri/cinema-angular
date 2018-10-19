@@ -6243,6 +6243,7 @@ var SeatsComponent = /** @class */ (function () {
             dttmShowStart: this.movieForSeats.dttmShowStart
         };
         this.reservationService.createReservation(this.reservation).then(function (res) {
+            console.log(res);
             if (res) {
                 _this.movieForReservation = _this.reservation;
                 _this.movieService.setMovieData(_this.movieForReservation);
