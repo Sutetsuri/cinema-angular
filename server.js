@@ -67,7 +67,7 @@ app.post("/api/reservations", function(req, res) {
   var newReservation = req.body;
   // newReservation.createDate = new Date();
 
-  if (!req.body.MovieTitle) {
+  if (!req.body.movieTitle) {
     handleError(res, "Invalid user input", "Must provide a MovieTitle.", 400);
   } else {
     db.collection(RESERVATIONS_COLLECTION).insertOne(newReservation, function(err, doc) {
