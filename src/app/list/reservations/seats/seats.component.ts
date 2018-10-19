@@ -108,6 +108,7 @@ export class SeatsComponent implements OnInit {
   };
 
   goToReservation() {
+    console.log('Inside goToReservation');
     this.reservation = {
       eventId: this.movieForSeats.EventID,
       movieTitle: this.movieForSeats.Title,
