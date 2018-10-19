@@ -5989,7 +5989,7 @@ var ReservationListComponent = /** @class */ (function () {
             //   seat: this.movieForReservation.seats,
             //   dttmShowStart: this.movieForReservation.dttmShowStart
             // };
-            console.log(this.reservation);
+            // console.log(this.reservation);
         }
     };
     ReservationListComponent.prototype.selectReservation = function (reservation) {
@@ -6231,6 +6231,7 @@ var SeatsComponent = /** @class */ (function () {
         }
     };
     SeatsComponent.prototype.goToReservation = function () {
+        var _this = this;
         this.reservation = {
             eventId: this.movieForSeats.EventID,
             movieTitle: this.movieForSeats.Title,
@@ -6241,9 +6242,13 @@ var SeatsComponent = /** @class */ (function () {
             seat: this.selectedSeats,
             dttmShowStart: this.movieForSeats.dttmShowStart
         };
-        this.movieForReservation = this.reservation;
-        this.movieService.setMovieData(this.movieForReservation);
-        this.router.navigate(['reservations']);
+        this.reservationService.createReservation(this.reservation).then(function (res) {
+            if (res) {
+                _this.movieForReservation = _this.reservation;
+                _this.movieService.setMovieData(_this.movieForReservation);
+                _this.router.navigate(['reservations']);
+            }
+        });
     };
     SeatsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

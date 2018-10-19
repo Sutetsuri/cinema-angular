@@ -44,7 +44,7 @@ export class ReservationListComponent implements OnInit {
       //   seat: this.movieForReservation.seats,
       //   dttmShowStart: this.movieForReservation.dttmShowStart
       // };
-      console.log(this.reservation);
+      // console.log(this.reservation);
     }
   }
 

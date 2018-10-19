@@ -118,9 +118,13 @@ export class SeatsComponent implements OnInit {
       seat: this.selectedSeats,
       dttmShowStart: this.movieForSeats.dttmShowStart
     };
-    this.movieForReservation = this.reservation;
-    this.movieService.setMovieData(this.movieForReservation);
-    this.router.navigate(['reservations']);
+    this.reservationService.createReservation(this.reservation).then(res => {
+      if (res) {
+        this.movieForReservation = this.reservation;
+        this.movieService.setMovieData(this.movieForReservation);
+        this.router.navigate(['reservations']);
+      }
+    });
   }
 
   // // Buy button handler
