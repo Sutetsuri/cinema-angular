@@ -1,5 +1,7 @@
 # cinema-angular
 Group project for JavaScript Based Applications class
+A simple app that uses finnkino API to show the list of movies and a bit of a RESTful backend to make and manage "reservations"
+Code from this repo is directly deployed to https://warm-basin-12644.herokuapp.com/
 
 
 ## Auto generated stuff: 
